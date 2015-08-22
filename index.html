@@ -1,0 +1,14 @@
+<head>
+  <base href="/">
+</head>
+
+<body ng-app="quick-survey">
+  <div class="nav" ng-controller="NavBarCtrl">
+    <div class="admin" ng-if="is_admin">
+      <a href="/">survey</a>
+      <a href="/admin">results</a>
+    </div>
+    <meteor-include src="loginButtons"></meteor-include>
+  </div>
+  <div ui-view class="container"></div>
+</body>

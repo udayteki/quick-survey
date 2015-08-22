@@ -1,0 +1,28 @@
+@import "./variables.import.less";
+
+.has-submitted,
+.please-sign-in {
+  text-align: center;
+}
+
+.survey ul {
+  list-style: none;
+}
+
+.survey-question {
+  label {
+    display: block;
+    margin-bottom: .5rem;
+
+    &.required::after {
+      content: ' *';
+      color: @primary-color;
+    }
+  }
+  input {
+    font-size: 1rem;
+    padding: .25rem;
+    width: 100%;
+    margin-bottom: 1.25rem;
+  }
+}

@@ -1,0 +1,20 @@
+<div ng-if="loaded && currentUser">
+  <form ng-if="!user.has_submitted" class="survey" name="survey">
+  <ul>
+    <li class="survey-question" ng-repeat="question in newResponse.questions">
+
+    </li>
+  </ul>
+    <button ng-disabled="!survey.$valid"
+      class="submit-survey-responses"
+      ng-click="submit(newResponse)">Submit</button>
+  </form>
+
+  <div ng-if="user.has_submitted" class="has-submitted empty-state">
+    Thanks for submitting your thoughts!
+  </div>
+</div>
+
+<div ng-if="!currentUser" class="please-sign-in empty-state">
+  Sign in or create an account to take the survey.
+</div>

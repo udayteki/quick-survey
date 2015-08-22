@@ -1,0 +1,19 @@
+@import './variables.import.less';
+
+.nav {
+  background-color: @secondary-color;
+  height: 4rem;
+  box-shadow: 0 5px 5px rgba(0, 0, 0, 0.02);
+  border-bottom: 1px solid lighten(@secondary-color, 15%);
+
+  .admin > a,
+  .login-link-text {
+    .standard-button
+  }
+
+  .admin {
+    height: 100%;
+    display: inline-block;
+    margin-left: 1.25rem;
+  }
+}

@@ -1,0 +1,10 @@
+The admin page
+<ul>
+  <li ng-repeat="response in responses">
+    <ul>
+      <li ng-repeat="question in response.questions">
+        {{question.answer}}
+      </li>
+    </ul>
+  </li>
+</ul>

@@ -21,7 +21,7 @@ angular.module("quick-survey").config(['$urlRouterProvider', '$stateProvider', '
     $stateProvider
       .state('questions', {
         url: '/',
-        templateUrl: '/client/js/questions/views/questions-list.ng.html',
+        templateUrl: 'client/js/questions/views/questions-list.ng.html',
         controller: 'QuestionListCtrl'
       })
       .state('admin', {

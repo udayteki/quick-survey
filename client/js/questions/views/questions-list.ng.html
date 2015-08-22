@@ -1,8 +1,9 @@
 <div ng-if="loaded && currentUser">
   <form ng-if="!user.has_submitted" class="survey" name="survey">
   <ul>
-    <li class="survey-question" ng-repeat="question in newResponse.questions">
-
+    <li class="survey-question"
+      ng-repeat="question in newResponse.questions"
+      survey-question="question">
     </li>
   </ul>
     <button ng-disabled="!survey.$valid"

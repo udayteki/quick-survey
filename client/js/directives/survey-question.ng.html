@@ -1,6 +1,12 @@
 <span>
   <label ng-bind="question.question" ng-class="{'required': question.required }"></label>
-  <input type="{{ question.type }}"
+  <span ng-if="question.type !== 'textarea'">
+    <input type="{{ question.type }}"
     ng-model="question.answer"
     ng-required="question.required"/>
+  </span>
+  <span ng-if="question.type === 'textarea'">
+    <textarea ng-model="question.answer" ng-required="question.required"></textarea>
+  </span>
+
 </span>

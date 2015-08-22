@@ -1,7 +1,7 @@
 angular.module('quick-survey').controller('QuestionListCtrl', [
   '$scope', '$rootScope', '$meteor',
   function ($scope, $rootScope, $meteor) {
-  console.log('questions loaded');
+
   $scope.loaded = false;
 
   $meteor.subscribe('questions').then(function(subscriptionHandle) {

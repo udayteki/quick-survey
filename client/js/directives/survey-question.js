@@ -1,12 +1,13 @@
-angular.module('quick-survey').directive('survey-question', function () {
+angular.module('quick-survey').directive('surveyQuestion', [function () {
   return {
-    restrict: 'EA',
+    restrict: 'A',
     scope: {
-      question: '&',
+      question: '=surveyQuestion',
     },
     controller: function ($scope) {
+      console.log($scope);
       console.log('survey question loaded');
     },
     templateUrl: 'client/js/directives/survey-question.ng.html',
   };
-});
+}]);

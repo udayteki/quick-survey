@@ -21,23 +21,23 @@ angular.module("quick-survey").config(['$urlRouterProvider', '$stateProvider', '
     $stateProvider
       .state('questions', {
         url: '/',
-        templateUrl: '/client/questions/views/questions-list.ng.html',
+        templateUrl: '/client/js/questions/views/questions-list.ng.html',
         controller: 'QuestionListCtrl'
       })
-    //   .state('admin', {
-    //     url: '/admin',
-    //     templateUrl: 'client/admin/views/admin.ng.html',
-    //     controller: 'AdminCtrl',
-    //     resolve: {
-    //       'currentUser': ["$meteor", function($meteor){
-    //         return $meteor.requireValidUser(function(user) {
-    //           if (user.emails[0].address === "admin@admin.com")
-    //             return true;
-    //           return 'UNAUTHORIZED';
-    //         });
-    //       }]
-    //     }
-    //   });
+      .state('admin', {
+        url: '/admin',
+        templateUrl: 'client/js/admin/views/admin.ng.html',
+        controller: 'AdminCtrl',
+        resolve: {
+          'currentUser': ["$meteor", function($meteor){
+            return $meteor.requireValidUser(function(user) {
+              if (user.emails[0].address === "admin@admin.com")
+                return true;
+              return 'UNAUTHORIZED';
+            });
+          }]
+        }
+      });
 
     $urlRouterProvider.otherwise("/");
   }]);

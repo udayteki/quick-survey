@@ -3,6 +3,7 @@
 > A tool for quickly building and releasing surveys. Open source, quick to host it yourself.
 
 ![quick-survey](http://i.imgur.com/MaYWf4J.png)
+![quick-survey-results](http://i.imgur.com/4elbHfe.png)
 
 # Goals
 

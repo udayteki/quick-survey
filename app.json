@@ -1,0 +1,12 @@
+{
+  "name": "Quick Survey",
+  "description": "Get going on a survey real quick",
+  "repository": "https://github.com/simonv3/quick-survey",
+  "keywords": ["meteor", "angular-meteor", "survey"],
+  "env": {
+    "BUILDPACK_URL": "https://github.com/AdmitHub/meteor-buildpack-horse.git",
+  },
+  "addons": [
+    "mongolab"
+  ]
+}

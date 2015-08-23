@@ -2,6 +2,8 @@
 
 > A tool for quickly building and releasing surveys. Open source, quick to host it yourself.
 
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/simonv3/quick-survey/tree/develop)
+
 ![quick-survey](http://i.imgur.com/MaYWf4J.png)
 ![quick-survey-results](http://i.imgur.com/4elbHfe.png)
 

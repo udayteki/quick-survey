@@ -1,18 +1,16 @@
-angular.module('quick-survey').controller('QuestionListCtrl', [
-  '$scope', '$rootScope', '$meteor',
+angular.module('quick-survey').controller('SurveyCtrl',
   function ($scope, $rootScope, $meteor) {
 
   $scope.loaded = false;
 
-  $meteor.subscribe('questions').then(function(subscriptionHandle) {
-    $scope.questions = $meteor.collection(Questions);
-
+  $meteor.subscribe('surveys').then(function(subscriptionHandle) {
+    $scope.surveys = $meteor.collection(Surveys);
+    // ToDo, check for the survey's active status.
     $scope.newResponse = {
-      'questions': angular.copy($scope.questions)
+      'survey': $scope.surveys[0],
+      'questions': angular.copy($scope.surveys[0].questions)
     };
   });
-
-  $scope.responses = $meteor.collection(Responses);
 
   $scope.$watch('currentUser', function() {
     if ($rootScope.currentUser) {
@@ -32,4 +30,4 @@ angular.module('quick-survey').controller('QuestionListCtrl', [
       });
   };
 
-}]);
+});

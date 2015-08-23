@@ -1,6 +1,6 @@
-Questions = new Mongo.Collection("questions");
+Surveys = new Mongo.Collection("surveys");
 
-Questions.allow({
+Surveys.allow({
 
   insert: function (userId, question) {
     // ToDo: User needs to be admin

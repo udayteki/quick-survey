@@ -1,10 +1,19 @@
-The admin page
-<ul>
-  <li ng-repeat="response in responses">
-    <ul>
-      <li ng-repeat="question in response.questions">
-        {{question.answer}}
-      </li>
-    </ul>
-  </li>
-</ul>
+<h1>Results</h1>
+<table class="survey-results">
+  <thead>
+    <tr>
+      <th>Survey</th>
+      <th ng-repeat="question in responses[0].survey.questions" style="min-width: {{ 100 / responses[0].survey.questions.length }}px">
+        Question {{ $index + 1 }}
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+  <tr ng-repeat="response in responses">
+    <td>{{ $index + 1 }}</td>
+    <td ng-repeat="question in response.questions">
+      {{question.answer}}
+    </td>
+  </tr>
+  </tbody>
+</table>

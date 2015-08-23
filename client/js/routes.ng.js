@@ -1,17 +1,23 @@
-angular.module('quick-survey').run(["$rootScope", "$state", function($rootScope, $state) {
+angular.module('quick-survey').run(function($rootScope, $state) {
   $rootScope.$on("$stateChangeError", function(event, toState, toParams, fromState, fromParams, error) {
-
+    console.log('state change error', error);
     // We can catch the error thrown when the $requireUser promise is rejected
 
     // and redirect the user back to the main page
     // console.log(event, next, previous, error);
-    if (error === 'UNAUTHORIZED') {
-      $state.go('questions');
+    if (error === 'UNAUTHORIZED' || error === 'AUTH_REQUIRED') {
+      $state.go('active-survey');
     }
 
   });
 
-}]);
+  $rootScope.$watch('currentUser', function() {
+    if (!$rootScope.loggingIn && $rootScope.currentUser === null) {
+      $state.go('active-survey');
+    }
+  });
+
+});
 
 angular.module("quick-survey").config(['$urlRouterProvider', '$stateProvider', '$locationProvider',
   function ($urlRouterProvider, $stateProvider, $locationProvider) {
@@ -19,10 +25,10 @@ angular.module("quick-survey").config(['$urlRouterProvider', '$stateProvider', '
     $locationProvider.html5Mode(true);
 
     $stateProvider
-      .state('questions', {
+      .state('active-survey', {
         url: '/',
-        templateUrl: 'client/js/questions/views/questions-list.ng.html',
-        controller: 'QuestionListCtrl'
+        templateUrl: 'client/js/surveys/views/survey.ng.html',
+        controller: 'SurveyCtrl'
       })
       .state('admin', {
         url: '/admin',

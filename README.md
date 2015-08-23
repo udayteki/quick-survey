@@ -2,6 +2,8 @@
 
 > A tool for quickly building and releasing surveys. Open source, quick to host it yourself.
 
+![quick-survey](http://i.imgur.com/MaYWf4J.png)
+
 # Goals
 
 * One click install - on heroku?

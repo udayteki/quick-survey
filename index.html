@@ -10,5 +10,5 @@
     </div>
     <meteor-include src="loginButtons"></meteor-include>
   </div>
-  <div ui-view class="container"></div>
+  <div ui-view class="container" ng-if="!loggingIn"></div>
 </body>

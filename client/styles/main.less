@@ -9,6 +9,7 @@
 body {
   background-color: rgba(0, 0, 0, .05);
   font-family: 'Helvetica';
+  line-height: 1.6;
 }
 
 a {
@@ -33,4 +34,19 @@ a {
 
 button {
   .standard-button;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th, td {
+  padding: .25rem .5rem;
+  text-align: left;
+  border: 1px solid fadein(@background-color, 5%);
+}
+
+tr:nth-child(odd) td {
+  background-color: @input-box-color;
 }

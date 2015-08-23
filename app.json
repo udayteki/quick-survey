@@ -4,7 +4,7 @@
   "repository": "https://github.com/simonv3/quick-survey",
   "keywords": ["meteor", "angular-meteor", "survey"],
   "env": {
-    "BUILDPACK_URL": "https://github.com/AdmitHub/meteor-buildpack-horse.git",
+    "BUILDPACK_URL": "https://github.com/AdmitHub/meteor-buildpack-horse.git"
   },
   "addons": [
     "mongolab"

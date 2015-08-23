@@ -7,7 +7,7 @@
     "ROOT_URL": {
       "description": "The full URL of your app (by default, http://appname.herokuapp.com)."
     },
-    "BUILDPACK_URL": "https://github.com/AdmitHub/meteor-buildpack-horse.git"
+    "BUILDPACK_URL": "https://github.com/jordansissel/heroku-buildpack-meteor.git"
   },
   "addons": [
     "mongolab"

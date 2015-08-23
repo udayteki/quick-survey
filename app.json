@@ -4,6 +4,9 @@
   "repository": "https://github.com/simonv3/quick-survey",
   "keywords": ["meteor", "angular-meteor", "survey"],
   "env": {
+    "ROOT_URL": {
+      "description": "The full URL of your libreboard app (by default, http://appname.herokuapp.com)."
+    },
     "BUILDPACK_URL": "https://github.com/AdmitHub/meteor-buildpack-horse.git"
   },
   "addons": [

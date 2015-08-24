@@ -1,5 +1,5 @@
 angular.module('quick-survey').controller('SurveyCtrl',
-  function ($scope, $rootScope, $meteor) {
+  function ($scope, $rootScope, $meteor, $state) {
 
   $scope.loaded = false;
 
@@ -12,10 +12,21 @@ angular.module('quick-survey').controller('SurveyCtrl',
     };
   });
 
+  $meteor.subscribe('users')
+    .then(function(){
+      if (!$rootScope.has_been_set_up) {
+        $state.go('setup');
+      } else {
+      }
+    });
+
   $scope.$watch('currentUser', function() {
     if ($rootScope.currentUser) {
       $scope.loaded = true;
       $scope.user = $meteor.object(Meteor.users, $rootScope.currentUser._id, false).subscribe('users');
+    } else {
+      // Test that there is at least one user. This should probably be
+      // done somewhere else.
     }
   });
 

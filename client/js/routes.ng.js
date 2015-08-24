@@ -1,4 +1,5 @@
 angular.module('quick-survey').run(function($rootScope, $state) {
+
   $rootScope.$on("$stateChangeError", function(event, toState, toParams, fromState, fromParams, error) {
     console.log('state change error', error);
     // We can catch the error thrown when the $requireUser promise is rejected
@@ -37,10 +38,28 @@ angular.module("quick-survey").config(['$urlRouterProvider', '$stateProvider', '
         resolve: {
           'currentUser': ["$meteor", function($meteor){
             return $meteor.requireValidUser(function(user) {
-              if (user.emails[0].address === "admin@admin.com")
+              if (user.is_admin)
                 return true;
               return 'UNAUTHORIZED';
             });
+          }]
+        }
+      })
+      .state('setup', {
+        url: '/setup',
+        templateUrl: 'client/js/admin/views/setup.ng.html',
+        controller: 'SetupCtrl',
+        controllerAs: 'sc',
+        resolve: {
+          'setup': ['$meteor', '$state', '$rootScope', function($meteor, $state, $rootScope) {
+            $meteor.subscribe('users')
+              .then(function() {
+                var numOfAdmin = $meteor.object(Counts ,'numberOfAdmin', false);
+                if (numOfAdmin.count !== 0) {
+                  $rootScope.has_been_set_up = true;
+                  $state.go('active-survey');
+                }
+              });
           }]
         }
       });

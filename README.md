@@ -9,9 +9,9 @@
 
 # Goals
 
-* One click install. Done.
-* Manage questions. Done delete and create - still need to make it possible to edit questions. Add more question types.
-* Optional log in and verification (through Github / Twitter) of a survey. Right now a log in is required, but there's no actual verification of the log in.
+* [x] One click install.
+* [ ] Manage questions. Done delete and create - still need to make it possible to edit questions. Add more question types.
+* [ ] Optional log in and verification (through Github / Twitter) of a survey. Right now a log in is required, but there's no actual verification of the log in.
 
 # To deploy
 
@@ -36,3 +36,7 @@ What's needed:
 * Ideas for the tool to do.
 * Angular / Meteor expertise to go over the code
 * Security holes found?
+
+# Attribution
+
+* Entypo icon font used for icons. It's beautiful. http://www.entypo.com/

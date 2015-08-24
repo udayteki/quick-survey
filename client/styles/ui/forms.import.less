@@ -20,6 +20,7 @@ select {
   padding: .25rem;
   width: 100%;
   margin-bottom: 1.25rem;
+  flex-grow: 1;
 }
 
 form h1 {
@@ -27,6 +28,9 @@ form h1 {
 }
 
 .form-align-group {
+
+  display: flex;
+
   label {
     width: 10rem;
     display: inline-block;
@@ -38,5 +42,9 @@ form h1 {
 
   button:first-child {
     margin-left: 10rem;
+  }
+
+  button:not(:first-child) {
+    margin-left: .5rem;
   }
 }

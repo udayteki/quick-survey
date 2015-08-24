@@ -3,7 +3,7 @@
   <!-- ToDo: extract this survey editing into a directive -->
   <ul>
     <li ng-repeat="question in activeSurvey.questions">
-      {{ question.question }} <span ng-click="deleteQuestion($index)">delete</span>
+      {{ question.question }} <span ng-click="deleteQuestion($index)" class="icon-trash"></span>
     </li>
   </ul>
   <span add-question survey="activeSurvey"></span>

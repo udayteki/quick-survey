@@ -4,14 +4,14 @@ Surveys.allow({
 
   insert: function (userId, survey) {
     // ToDo: User needs to be admin
-    if (Meteor.user().emails[0].address === "admin@admin.com") {
+    if (Meteor.user().is_admin) {
       return true;
     }
   },
 
   update: function (userId, survey, fields, modifier) {
     // ToDo: Make admin an actual check
-    if (Meteor.user().emails[0].address === "admin@admin.com") {
+    if (Meteor.user().is_admin) {
       return true;
     }
     return false;
@@ -19,7 +19,7 @@ Surveys.allow({
 
   remove: function (userId, survey) {
     // ToDo: User needs to be admin
-    if (Meteor.user().emails[0].address === "admin@admin.com") {
+    if (Meteor.user().is_admin) {
       return true;
     }
   }

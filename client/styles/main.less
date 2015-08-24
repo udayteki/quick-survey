@@ -1,5 +1,8 @@
 @import "./variables.import.less";
 
+@import "./ui/forms.import.less";
+@import "./ui/buttons.import.less";
+
 * {
   padding: 0;
   margin: 0;
@@ -30,10 +33,6 @@ a {
   border-radius: 3px;
   border: 3px solid darken(@empty-state-color, 8%);
   color: lighten(@text-color, 20%);
-}
-
-button {
-  .standard-button;
 }
 
 table {

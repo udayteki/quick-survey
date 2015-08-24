@@ -1,4 +1,13 @@
-<h1>Results</h1>
+<h1>Admin</h1>
+<h2>Survey Questions</h2>
+  <!-- ToDo: extract this survey editing into a directive -->
+  <ul>
+    <li ng-repeat="question in activeSurvey.questions">
+      {{ question.question }} <span ng-click="deleteQuestion($index)">delete</span>
+    </li>
+  </ul>
+  <span add-question survey="activeSurvey"></span>
+<h2>Results</h2>
 <table class="survey-results">
   <thead>
     <tr>

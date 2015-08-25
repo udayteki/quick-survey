@@ -1,4 +1,5 @@
 
 angular.module('quick-survey', [
   'angular-meteor',
-  'ui.router']);
+  'ui.router',
+  'hc.marked']);

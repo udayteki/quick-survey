@@ -7,6 +7,7 @@ Surveys.allow({
     if (Meteor.user().is_admin) {
       return true;
     }
+    return false;
   },
 
   update: function (userId, survey, fields, modifier) {
@@ -22,6 +23,7 @@ Surveys.allow({
     if (Meteor.user().is_admin) {
       return true;
     }
+    return false;
   }
 
 });

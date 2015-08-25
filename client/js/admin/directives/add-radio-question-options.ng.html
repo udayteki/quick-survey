@@ -1,0 +1,14 @@
+<ul>
+  <li ng-repeat="option in question.options | orderBy:'type' track by $index">
+    <div class="form-align-group" ng-if="option.type === 'normal'">
+      <label><input type="radio" disabled/></label>
+      <input type="text" ng-model="option.value" placeholder="Write something">
+    </div>
+    <div class="form-align-group" ng-if="option.type === 'other'">
+      <label>Other: </label>
+      <input type="text" disabled>
+    </div>
+  </li>
+</ul>
+<a ng-click="addOption()"><i class="icon-plus"></i> Add option</a>
+<a ng-click="addOther()"><i class="icon-plus"></i> Add "other"</a>

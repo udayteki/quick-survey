@@ -1,5 +1,7 @@
 angular.module('quick-survey').run(function($rootScope, $state) {
 
+  Meteor.subscribe("userData");
+
   $rootScope.$on("$stateChangeError", function(event, toState, toParams, fromState, fromParams, error) {
     console.log('state change error', error);
     // We can catch the error thrown when the $requireUser promise is rejected
@@ -14,6 +16,7 @@ angular.module('quick-survey').run(function($rootScope, $state) {
 
   $rootScope.$watch('currentUser', function() {
     if (!$rootScope.loggingIn && $rootScope.currentUser === null) {
+      console.log('redirecting to active-survey');
       $state.go('active-survey');
     }
   });
@@ -29,7 +32,12 @@ angular.module("quick-survey").config(['$urlRouterProvider', '$stateProvider', '
       .state('active-survey', {
         url: '/',
         templateUrl: 'client/js/surveys/views/survey.ng.html',
-        controller: 'SurveyCtrl'
+        controller: 'SurveyCtrl',
+        resolve: {
+          'currentUser': ['$meteor', function($meteor) {
+               return $meteor.waitForUser();
+           }]
+        }
       })
       .state('admin', {
         url: '/admin',
@@ -38,8 +46,7 @@ angular.module("quick-survey").config(['$urlRouterProvider', '$stateProvider', '
         resolve: {
           'currentUser': ["$meteor", function($meteor){
             return $meteor.requireValidUser(function(user) {
-              if (user.is_admin)
-                return true;
+              if (user.is_admin) return true;
               return 'UNAUTHORIZED';
             });
           }]
@@ -51,6 +58,9 @@ angular.module("quick-survey").config(['$urlRouterProvider', '$stateProvider', '
         controller: 'SetupCtrl',
         controllerAs: 'sc',
         resolve: {
+          'currentUser': ['$meteor', function($meteor) {
+            return $meteor.waitForUser();
+          }],
           'setup': ['$meteor', '$state', '$rootScope', function($meteor, $state, $rootScope) {
             $meteor.subscribe('users')
               .then(function() {

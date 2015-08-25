@@ -2,13 +2,10 @@ angular.module('quick-survey').directive('addQuestion', function () {
   return {
     restrict: 'A',
     scope: {
-      survey: '=survey',
+      survey: '=',
+      addingQuestion: '='
     },
     controller: function ($scope) {
-
-      $scope.$watch('survey', function() {
-        console.log('survey', $scope.survey);
-      });
 
       $scope.question = {
         'required': false,
@@ -18,6 +15,7 @@ angular.module('quick-survey').directive('addQuestion', function () {
         {'type': 'number'},
         {'type': 'text'},
         {'type': 'textarea'},
+        {'type': 'radio'},
         {'type': 'date'}
         // ToDo: Add more question types as the question directive supports them.
       ];
@@ -27,9 +25,10 @@ angular.module('quick-survey').directive('addQuestion', function () {
       };
 
       $scope.addQuestion = function (question) {
-        console.log($scope.question);
-        $scope.survey.questions.push($scope.question);
-        // question.type = question.type.type;
+        $scope.survey.questions.push(question);
+        $scope.question = {
+          'required': false,
+        };
       };
     },
     templateUrl: 'client/js/admin/directives/add-question.ng.html',

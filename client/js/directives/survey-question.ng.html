@@ -1,6 +1,6 @@
 <span>
   <label ng-bind="question.question" ng-class="{'required': question.required }"></label>
-  <span ng-if="question.type !== 'textarea'">
+  <span ng-if="question.type !== 'textarea' && question.type !== 'radio'">
     <input type="{{ question.type }}"
     ng-model="question.answer"
     ng-required="question.required"/>
@@ -8,5 +8,34 @@
   <span ng-if="question.type === 'textarea'">
     <textarea ng-model="question.answer" ng-required="question.required"></textarea>
   </span>
+  <span ng-if="question.type === 'radio'">
+          {{ choosingOther }}
+          {{ question.answer }}
+    <label ng-repeat="option in question.options">
 
+      <input ng-if="option.type !== 'other'"
+        ng-model="question.answer"
+        ng-value="option"
+        name="{{ question.question }}"
+        ng-change="optionChanged(option)"
+        type="radio"/>
+
+      <input ng-if="option.type === 'other'"
+        ng-model="question.answer"
+        ng-value="option"
+        name="{{ question.question }}"
+        type="radio"
+        ng-change="optionChanged(option)"
+
+        />
+
+      <input ng-if="option.type === 'other'"
+        type="text"
+        ng-model="option.value"
+        ng-disabled="!choosingOther"/>
+      <span ng-if="option.type !== 'other'">
+      {{option.value}}
+      </span>
+    </label>
+  </span>
 </span>

@@ -5,7 +5,7 @@
 @input-box-color: #fff;
 @border-color: darken(@primary-color, 10%);
 @text-color: #333;
-@link-color: #fff;
+@link-color: @primary-color;
 @empty-state-color: #fff;
 
 @border-radius: 3px;
@@ -20,7 +20,7 @@
   cursor: pointer;
   font-size: 1rem;
   line-height: 1;
-  color: @link-color;
+  color: @input-box-color;
   background-color: @primary-color;
   border-radius: 3px;
   padding: .5rem 1.25rem;

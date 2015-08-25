@@ -5,7 +5,20 @@ angular.module('quick-survey').directive('surveyQuestion', function () {
       question: '=surveyQuestion',
     },
     controller: function ($scope) {
-      // TODO
+      $scope.other = '';
+      $scope.choosingOther = false;
+      $scope.optionChanged = function (option) {
+        if (option.type != 'other') {
+          $scope.other = '';
+          $scope.choosingOther = false;
+        } else {
+          $scope.choosingOther = true;
+        }
+      };
+
+      $scope.changeOption = function(option){
+        $scope.optionChanged();
+      };
     },
     templateUrl: 'client/js/directives/survey-question.ng.html',
   };

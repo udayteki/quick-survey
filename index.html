@@ -4,6 +4,7 @@
 </head>
 
 <body ng-app="quick-survey">
+  <div class="page-wrap">
   <div class="nav" ng-controller="NavBarCtrl">
     <div class="admin" ng-if="is_admin">
       <a href="/">survey</a>
@@ -12,7 +13,15 @@
     <meteor-include src="loginButtons"></meteor-include>
   </div>
   <div ui-view
-    class="container"
+    class="container small-row"
     ng-class="{ admin: $state.includes('admin') }"
     ng-if="!loggingIn"></div>
+  </div>
+  <footer class="site-footer">
+    <div class="wide-row footer-wrapper">
+      <img src="/images/squirrel-small.png"/>
+      <p>Powered by Quick-Survey, a self-hosted, easy-to-install survey tool that you control and own. Get started on <a href="https://github.com/simonv3/quick-survey"><i class="icon-github"></i> GitHub</a>.
+      </p>
+    </div>
+  </footer>
 </body>

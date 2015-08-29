@@ -1,0 +1,50 @@
+@import "./variables.import.less";
+
+// All the styles that make the sticky footer work.
+
+* {
+  margin: 0;
+}
+
+html, body {
+  height: 100%;
+}
+
+.page-wrap {
+  min-height: 100%;
+  /* equal to footer height */
+  margin-bottom: -@footer-height;
+}
+
+.page-wrap:after {
+  content: "";
+  display: block;
+}
+
+.site-footer, .page-wrap:after {
+  height: @footer-height;
+}
+
+.site-footer {
+  margin-top: 1rem;
+  text-align: center;
+
+  .footer-wrapper {
+    max-width: 480px;
+  }
+
+  img, p {
+    display: inline-block;
+    vertical-align: middle;
+  }
+
+  p {
+    margin-top: 1rem;
+    font-style: italic;
+    color: lighten(@text-color, 20%);
+  }
+}
+
+.site-footer .vertical-centre {
+  padding-top: 2rem;
+}

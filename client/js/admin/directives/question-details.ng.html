@@ -1,0 +1,39 @@
+{{ question.question }}
+<a ng-click="editQuestion(question)" class="icon-edit"></a>
+<a ng-click="deleteQuestion($index)" class="icon-trash"></a>
+
+<div ng-if="editingQuestion">
+  <form>
+    <div class="form-align-group">
+      <label>Question:</label>
+      <input type="text" ng-model="question.question"/>
+    </div>
+
+    <div class="form-align-group">
+      <label>Help Text:</label>
+      <input type="text" ng-model="question.helpText"/>
+    </div>
+    <div class="form-align-group">
+      <label>Type: </label>
+      <select ng-options="option.type as option.type for option in questionTypes"
+        ng-model="question.type"
+        required>
+      </select>
+    </div>
+    <div ng-if="question.type === 'radio'"
+      class="add-checkbox-question-options"
+      add-radio-question-options
+      question="question"
+      existing-options="question.options"
+    ></div>
+    <div class="form-align-group">
+      <label>Required? </label>
+      <input type="checkbox" ng-model="question.required"/>
+    </div>
+    <div class="form-align-group">
+
+      <button ng-click="save(question)">Save Changes</button>
+      <button ng-click="cancel(question)">Cancel</button>
+    </div>
+  </form>
+</div>

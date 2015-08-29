@@ -7,36 +7,32 @@
         <th class="description">Description</th>
         <th>Active</th>
         <th>Require Sign In</th>
+        <th></th>
       </tr>
     </thead>
     <tbody>
-      <tr>
-        <td>
-          <input type="text" ng-model="survey.name"/>
-        </td>
-        <td>
-          <textarea ng-model="survey.description"></textarea>
-        </td>
-        <td>
-          <input type="checkbox" ng-model="survey.active"/>
-        </td>
-        <td>
-          <input type="checkbox" ng-model="survey.require_sign_in"/>
-        </td>
+      <tr edit-survey-details
+        survey="survey">
       </tr>
     </tbody>
   </table>
 </form>
+<div class="questions">
 <h2>Survey Questions</h2>
   <div ng-if="survey.questions.length === 0 && !addingQuestion" class="empty-state">
     Add some questions
   </div>
   <ul ng-if="survey">
-    <li ng-repeat="question in survey.questions">
-      {{ question.question }} <span ng-click="deleteQuestion($index)" class="icon-trash"></span>
+    <li ng-repeat="question in survey.questions"
+      question-details
+      question="question"
+      question-types="questionTypes"
+      survey="survey">
     </li>
   </ul>
   <span add-question
     survey="survey"
+    question-types="questionTypes"
     adding-question="toggleAddingQuestion"
     class="add-question"></span>
+</div>

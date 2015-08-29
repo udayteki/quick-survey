@@ -3,12 +3,17 @@ angular.module('quick-survey').directive('addRadioQuestionOptions', function () 
     restrict: 'A',
     scope: {
       question: '=question',
+      existingOptions: '='
     },
     controller: function ($scope) {
-      $scope.question.options = [{
+
+      if (!$scope.existingOptions) {
+        $scope.question.options = [{
           'value': '',
           'type': 'normal'
-        }]
+        }];
+      }
+
       $scope.addOption = function() {
         $scope.question.options.push({
           'value': '',

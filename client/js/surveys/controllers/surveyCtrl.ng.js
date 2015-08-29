@@ -3,8 +3,8 @@ angular.module('quick-survey').controller('SurveyCtrl',
 
   $scope.loaded = false;
 
-  $meteor.subscribe('surveys').then(function(subscriptionHandle) {
-    $scope.activeSurvey = $meteor.collection(Surveys)[0];
+  $scope.$meteorSubscribe('surveys').then(function() {
+    $scope.activeSurvey = $meteor.object(Surveys, {active: true}, false);
     // ToDo, check for the survey's active status.
     $scope.newResponse = {
       'survey': $scope.activeSurvey,
@@ -12,7 +12,7 @@ angular.module('quick-survey').controller('SurveyCtrl',
     };
   });
 
-  $meteor.subscribe('users')
+  $scope.$meteorSubscribe('users')
     .then(function(){
       if (!$rootScope.has_been_set_up &&
         !$rootScope.currentUser &&
@@ -29,6 +29,8 @@ angular.module('quick-survey').controller('SurveyCtrl',
       .then(function(result) {
         $scope.user.has_submitted = true;
         $scope.user.save();
+      }, function(error) {
+        console.log('error');
       });
   };
 

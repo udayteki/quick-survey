@@ -1,4 +1,5 @@
 <span>
+
   <label ng-bind="question.question" ng-class="{'required': question.required }"></label>
   <span ng-if="question.type !== 'textarea' && question.type !== 'radio'">
     <input type="{{ question.type }}"
@@ -9,8 +10,6 @@
     <textarea ng-model="question.answer" ng-required="question.required"></textarea>
   </span>
   <span ng-if="question.type === 'radio'">
-          {{ choosingOther }}
-          {{ question.answer }}
     <label ng-repeat="option in question.options">
 
       <input ng-if="option.type !== 'other'"

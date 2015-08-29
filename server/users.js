@@ -10,5 +10,8 @@ Meteor.publish("users",function(){
 });
 
 Meteor.publish(null, function() {
-  return Meteor.users.find({_id: this.userId}, {fields: { emails: 1, profile: 1 } });
+  return Meteor.users.find({_id: this.userId},
+                           {fields: { emails: 1,
+                                      profile: 1,
+                                      is_admin: 1 }});
 });

@@ -1,10 +1,10 @@
-<div ng-if="currentUser && activeSurvey.active">
+<div ng-if="(currentUser || !activeSurvey.require_sign_in) && activeSurvey.active">
   <h1 ng-bind="activeSurvey.name"></h1>
   <div class="description" marked="activeSurvey.description">
 
   </div>
   <form ng-if="!user.has_submitted" class="survey" name="survey">
-  <ul>
+  <ul class="survey-question-list">
     <li class="survey-question"
       ng-repeat="question in newResponse.questions"
       survey-question="question">

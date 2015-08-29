@@ -6,6 +6,15 @@ angular.module('quick-survey').directive('manageSurvey', function () {
     },
     controller: function ($scope) {
 
+      $scope.questionTypes = [
+        {'type': 'number'},
+        {'type': 'text'},
+        {'type': 'textarea'},
+        {'type': 'radio'},
+        {'type': 'date'}
+        // ToDo: Add more question types as the question directive supports them.
+      ];
+
       $scope.toggleAddingQuestion = function() {
         $scope.addingQuestion = !$scope.addingQuestion;
       };

@@ -7,13 +7,10 @@ Responses.allow({
   },
 
   update: function (userId, response, fields, modifier) {
-    // No-one ToDo: Let users change their own response?
-    return false;
+    return Meteor.user().is_admin;
   },
 
   remove: function (userId, response) {
-    // ToDo: User needs to be admin
-    return false;
+    return Meteor.user().is_admin;
   }
-
 });

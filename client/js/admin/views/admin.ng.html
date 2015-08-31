@@ -2,7 +2,7 @@
   <div manage-survey
     survey="activeSurvey">
   </div>
-<h2>Results</h2>
+<h2>Results </h2>
 <table class="survey-results">
   <thead>
     <tr>
@@ -16,8 +16,18 @@
   <tr ng-repeat="response in responses">
     <td>{{ $index + 1 }}</td>
     <td ng-repeat="question in response.questions">
-      {{question.answer}}
+      <span ng-if="question.type !== 'radio'">
+        {{ question.answer }}
+      </span>
+      <span ng-if="question.type === 'radio'">
+        {{ question.answer.value }}
+      </span>
     </td>
   </tr>
   </tbody>
 </table>
+<small>
+  Reset:
+  <a ng-click="resetUsers()" title="Reset Users">Users</a>,
+  <a ng-click="clearResults()" title="Clear Results">Responses</a>
+</small>

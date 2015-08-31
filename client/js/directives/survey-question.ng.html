@@ -16,7 +16,7 @@
       id="{{ question._id}}-answer"></textarea>
   </span>
   <span ng-if="question.type === 'radio'">
-    <label ng-repeat="option in question.options">
+    <label ng-repeat="option in question.options | orderBy:'type' track by $index">
       <input ng-if="option.type !== 'other'"
         ng-model="question.answer"
         ng-value="option"
@@ -35,6 +35,7 @@
 
       <input ng-if="option.type === 'other'"
         type="text"
+        class="other"
         ng-model="option.value"
         ng-disabled="!choosingOther"/>
       <span ng-if="option.type !== 'other'">

@@ -29,6 +29,7 @@ angular.module('quick-survey').controller('SurveyCtrl',
     newResponse.user = $rootScope.currentUser._id;
     $scope.responses.save(newResponse)
       .then(function(result) {
+        $scope.user = $meteor.object(Meteor.users, $rootScope.currentUser._id, false).subscribe('users');
         $scope.user.has_submitted = true;
         $scope.user.save();
       }, function(error) {

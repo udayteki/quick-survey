@@ -20,10 +20,14 @@
   </div>
 </div>
 
-<div ng-if="!activeSurvey.active" class="empty-state">
+<div ng-if="!activeSurvey.active && loaded" class="empty-state">
   There is no active survey published yet.
 </div>
 
 <div ng-if="!currentUser && activeSurvey.active && activeSurvey.require_sign_in" class="please-sign-in empty-state">
   Sign in or create an account to take the survey.
+</div>
+
+<div ng-if="$root.loggingIn || !loaded" class="empty-state">
+  Loading...
 </div>

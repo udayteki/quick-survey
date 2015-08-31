@@ -1,14 +1,18 @@
 <td>
-  <input type="text" ng-model="survey.name"/>
+  <label for="survey-name" class="hidden"></label>
+  <input id="survey-name" type="text" ng-model="survey.name"/>
 </td>
 <td>
-  <textarea ng-model="survey.description"></textarea>
+  <label for="survey-description" class="hidden"></label>
+  <textarea id="survey-description" ng-model="survey.description"></textarea>
 </td>
 <td>
-  <input type="checkbox" ng-model="survey.active"/>
+  <label for="survey-is-active" class="hidden"></label>
+  <input id="survey-is-active" type="checkbox" ng-model="survey.active"/>
 </td>
 <td>
-  <input type="checkbox" ng-model="survey.require_sign_in"/>
+  <label for="survey-requires-sign-in" class="hidden"></label>
+  <input id="survey-requires-sign-in" type="checkbox" ng-model="survey.require_sign_in"/>
 </td>
 <td>
   <button ng-click="save(survey)">Save</button>

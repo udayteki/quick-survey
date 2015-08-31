@@ -3,7 +3,7 @@
   <table>
     <thead>
       <tr>
-        <th>Name</th>
+        <th></th>
         <th class="description">Description</th>
         <th>Active</th>
         <th>Require Sign In</th>
@@ -26,6 +26,7 @@
     <li ng-repeat="question in survey.questions"
       question-details
       question="question"
+      index="$index"
       question-types="questionTypes"
       survey="survey">
     </li>

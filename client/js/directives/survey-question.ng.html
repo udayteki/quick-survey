@@ -1,17 +1,22 @@
 <span>
 
-  <label ng-bind="question.question" ng-class="{'required': question.required }"></label>
+  <label
+    ng-bind="question.question"
+    ng-class="{'required': question.required }"
+    for="{{ question._id }}-answer"></label>
   <span ng-if="question.type !== 'textarea' && question.type !== 'radio'">
     <input type="{{ question.type }}"
     ng-model="question.answer"
-    ng-required="question.required"/>
+    ng-required="question.required"
+    id="{{ question._id}}-answer"/>
   </span>
   <span ng-if="question.type === 'textarea'">
-    <textarea ng-model="question.answer" ng-required="question.required"></textarea>
+    <textarea ng-model="question.answer"
+      ng-required="question.required"
+      id="{{ question._id}}-answer"></textarea>
   </span>
   <span ng-if="question.type === 'radio'">
     <label ng-repeat="option in question.options">
-
       <input ng-if="option.type !== 'other'"
         ng-model="question.answer"
         ng-value="option"

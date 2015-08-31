@@ -16,7 +16,6 @@ angular.module('quick-survey').run(function($rootScope, $state) {
 
   $rootScope.$watch('currentUser', function() {
     if (!$rootScope.loggingIn && $rootScope.currentUser === null) {
-      console.log('redirecting to active-survey');
       $state.go('active-survey');
     }
   });
@@ -35,8 +34,8 @@ angular.module("quick-survey").config(['$urlRouterProvider', '$stateProvider', '
         controller: 'SurveyCtrl',
         resolve: {
           'currentUser': ['$meteor', function($meteor) {
-               return $meteor.waitForUser();
-           }]
+            return $meteor.waitForUser();
+          }],
         }
       })
       .state('admin', {

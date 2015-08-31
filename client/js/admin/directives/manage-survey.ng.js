@@ -18,10 +18,6 @@ angular.module('quick-survey').directive('manageSurvey', function () {
       $scope.toggleAddingQuestion = function() {
         $scope.addingQuestion = !$scope.addingQuestion;
       };
-
-      $scope.deleteQuestion = function (index) {
-        $scope.survey.questions.splice(index, 1);
-      };
     },
     templateUrl: 'client/js/admin/directives/manage-survey.ng.html',
   };

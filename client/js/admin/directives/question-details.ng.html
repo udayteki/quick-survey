@@ -1,23 +1,24 @@
 {{ question.question }}
-<a ng-click="editQuestion(question)" class="icon-edit"></a>
-<a ng-click="deleteQuestion($index)" class="icon-trash"></a>
+<a ng-click="editQuestion(question)" title="Edit Question" class="icon-edit" ></a>
+<a ng-click="deleteQuestion(index)" title="Delete Question" class="icon-trash"></a>
 
 <div ng-if="editingQuestion">
   <form>
     <div class="form-align-group">
-      <label>Question:</label>
-      <input type="text" ng-model="question.question"/>
+      <label for="editing-question-{{ $index }}-question">Question:</label>
+      <input id="editing-question-{{ $index }}-question" type="text" ng-model="question.question"/>
     </div>
 
     <div class="form-align-group">
-      <label>Help Text:</label>
-      <input type="text" ng-model="question.helpText"/>
+      <label for="editing-question-{{ $index }}-help-text">Help Text:</label>
+      <input id="editing-question-{{ $index }}-help-text" type="text" ng-model="question.helpText"/>
     </div>
     <div class="form-align-group">
-      <label>Type: </label>
+      <label for="editing-question-{{ $index }}-type">Type: </label>
       <select ng-options="option.type as option.type for option in questionTypes"
         ng-model="question.type"
-        required>
+        required
+        id="editing-question-{{ $index }}-type">
       </select>
     </div>
     <div ng-if="question.type === 'radio'"
@@ -27,8 +28,8 @@
       existing-options="question.options"
     ></div>
     <div class="form-align-group">
-      <label>Required? </label>
-      <input type="checkbox" ng-model="question.required"/>
+      <label for="editing-question-{{ $index }}-required">Required? </label>
+      <input id="editing-question-{{ $index }}-required" type="checkbox" ng-model="question.required"/>
     </div>
     <div class="form-align-group">
 

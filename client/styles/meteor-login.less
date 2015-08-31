@@ -8,9 +8,27 @@
   }
 }
 
+#login-buttons .login-close-text {
+  float: right;
+
+  &::before {
+    content:"\e67e";
+    font-family: 'icomoon';
+    width: 1rem;
+    margin-right: .25rem;
+    height: 1rem;
+    vertical-align: middle;
+  }
+}
+
 #login-dropdown-list {
   position: absolute;
   top: .75rem;
   right: .75rem;
   left: auto;
+}
+
+.login-form input[type=password],
+.login-form input[type=email]{
+  margin-bottom: .75rem;
 }

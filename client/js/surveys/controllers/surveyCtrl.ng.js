@@ -3,14 +3,16 @@ angular.module('quick-survey').controller('SurveyCtrl',
 
   $scope.loaded = false;
 
-  $scope.$meteorSubscribe('surveys').then(function() {
-    $scope.activeSurvey = $meteor.object(Surveys, {active: true}, false);
-    // ToDo, check for the survey's active status.
-    $scope.newResponse = {
-      'survey': $scope.activeSurvey,
-      'questions': angular.copy($scope.activeSurvey.questions)
-    };
-  });
+  $scope.$meteorSubscribe('surveys')
+    .then(function() {
+      $scope.loaded = true;
+      $scope.activeSurvey = $meteor.object(Surveys, {active: true}, false);
+      // ToDo, check for the survey's active status.
+      $scope.newResponse = {
+        'survey': $scope.activeSurvey,
+        'questions': angular.copy($scope.activeSurvey.questions)
+      };
+    });
 
   $scope.$meteorSubscribe('users')
     .then(function(){

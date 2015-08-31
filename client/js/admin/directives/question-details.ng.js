@@ -4,6 +4,7 @@ angular.module('quick-survey').directive('questionDetails', function () {
     scope: {
       question: '=',
       questionTypes: '=',
+      index: '=',
       // TODO: figure out a way to not pass survey through here, just
       // the save() method on survey.
       survey: '='
@@ -16,6 +17,14 @@ angular.module('quick-survey').directive('questionDetails', function () {
 
       $scope.cancel = function(question) {
         $scope.editingQuestion = false;
+      };
+
+      $scope.deleteQuestion = function (index) {
+        var success = confirm("Are you sure you want to delete this question?")
+        if (success) {
+          $scope.survey.questions.splice(index, 1);
+          $scope.save();
+        }
       };
 
       $scope.save = function(question) {

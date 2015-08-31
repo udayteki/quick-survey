@@ -12,7 +12,7 @@
 }
 
 body {
-  background-color: rgba(0, 0, 0, .05);
+  background-color: fadeout(@secondary-color, 95%);
   font-family: 'Helvetica';
   line-height: 1.6;
 }
@@ -22,6 +22,15 @@ a {
   color: @link-color;
   transition: background-color .2s;
   text-decoration: none;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 1rem 0;
 }
 
 .small-row,
@@ -38,7 +47,7 @@ a {
 }
 
 .container {
-  margin: 2rem auto;
+  margin: 2rem auto 3rem;
 }
 
 .empty-state {
@@ -49,6 +58,14 @@ a {
   border: 3px solid darken(@empty-state-color, 8%);
   color: lighten(@text-color, 20%);
   text-align: center;
+}
+
+.hidden {
+  display: none;
+}
+
+.page-wrap {
+  box-shadow: 0px 0px 200px rgba(0, 0, 0, .05) inset
 }
 
 table {

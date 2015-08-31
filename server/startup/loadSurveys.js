@@ -3,7 +3,7 @@ Meteor.startup(function () {
   if (Surveys.find().count() === 0) {
     var survey = {
       'active': true,
-      'questions': questions,
+      'questions': [],
       'description': '',
       'close_date': undefined,
       'name': 'Active Survey',
@@ -11,5 +11,9 @@ Meteor.startup(function () {
     };
     Surveys.insert(survey);
   }
+
+  Accounts.config({
+    'sendVerificationEmail': true,
+  });
 });
 

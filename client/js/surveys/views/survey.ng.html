@@ -1,4 +1,4 @@
-<div ng-if="(currentUser || !activeSurvey.require_sign_in) && activeSurvey.active">
+<div ng-if="(currentUser || !activeSurvey.require_sign_in) && activeSurvey.active" class="frontend">
   <h1 ng-bind="activeSurvey.name"></h1>
   <form ng-if="!currentUser.has_submitted" class="survey" name="survey">
   <div class="description" marked="activeSurvey.description">

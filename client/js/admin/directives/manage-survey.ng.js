@@ -11,6 +11,7 @@ angular.module('quick-survey').directive('manageSurvey', function () {
         {'type': 'text'},
         {'type': 'textarea'},
         {'type': 'radio'},
+        {'type': 'checkbox'},
         {'type': 'date'}
         // ToDo: Add more question types as the question directive supports them.
       ];

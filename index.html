@@ -10,7 +10,9 @@
       <a href="/">survey</a>
       <a href="/admin">admin</a>
     </div>
-    <meteor-include src="loginButtons"></meteor-include>
+    <span ng-if="!$state.includes('setup')">
+      <meteor-include src="loginButtons"></meteor-include>
+    </span>
   </div>
   <div ui-view
     class="container small-row"

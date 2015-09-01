@@ -19,7 +19,7 @@ angular.module('quick-survey').directive('addQuestion', function () {
         'type': $scope.questionTypes[0].type
       };
 
-      $scope.addQuestion = function (question) {
+      $scope.addQuestion = function(question) {
         $scope.survey.questions.push(question);
         $scope.question = {
           'required': false,

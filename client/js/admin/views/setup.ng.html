@@ -1,16 +1,16 @@
-<div>
-  <h2>Welcome</h2>
+<div class="setup">
+  <h2>Welcome!</h2>
   <p>
-    Thanks for trying out quick-survey. Since you're the first person to access the site, we'll have you set up an admin account.
+    Thanks for trying out quick-survey. Since you're the first person to access the site, you'll need to set up an admin account.
   </p>
   <span class="error">
     {{ sc.error }}
   </span>
-  <label>First, what's your username?</label>
+  <label>First, what do you want your username to be?</label>
   <input type="text" ng-model="sc.newAdmin.username"/>
   <label>Then we'll need your email</label>
   <input type="email" ng-model="sc.newAdmin.email"/>
-  <label>Finally, what do you want your password to be?</label>
+  <label>Finally, what should your password be?</label>
   <input type="password" ng-model="sc.newAdmin.password"/>
   <button ng-click="sc.createAdmin(newAdmin)"> Let's get started</button>
 </div>

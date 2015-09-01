@@ -2,7 +2,7 @@
 Add a question <i class="icon-chevron-down"></i>
 </a>
 
-<form ng-show="showAddQuestionForm" name="addQuestion">
+<form ng-show="showAddQuestionForm" name="addQuestionForm">
   <h1>Create a new question:</h1>
   <div class="form-align-group">
     <label for="new-question-type">Type: </label>
@@ -27,16 +27,24 @@ Add a question <i class="icon-chevron-down"></i>
   </div>
 
   <div ng-if="question.type === 'radio'"
-    class="add-checkbox-question-options"
-    add-radio-question-options
+    class="add-question-with-options"
+    add-question-with-options
     question="question"
   ></div>
+
+  <div ng-if="question.type === 'checkbox'"
+    class="add-question-with-options"
+    add-question-with-options
+    question="question"
+  ></div>
+
   <div class="form-align-group">
     <label for="new-question-is-required">Required? </label>
     <input type="checkbox" ng-model="question.required" id="new-question-is-required"/>
   </div>
   <div class="form-align-group">
-    <button ng-click="addQuestion(question)" ng-disabled="addQuestion.$invalid">Create Question
+    {{ addQuestion }}
+    <button ng-click="addQuestion(question)" ng-disabled="addQuestionForm.$invalid">Create Question
     </button>
     <a class="cancel" ng-click="showAddQuestionForm = false">
       <i class="icon-cross"></i>Cancel

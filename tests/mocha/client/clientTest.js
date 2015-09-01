@@ -1,7 +1,8 @@
 MochaWeb.testOnly(function(){
 
-  describe("Should show setup screen on first use", function() {
+  describe("Should load the page", function() {
     Meteor.flush();
+    chai.assert.equal($('div.setup > h2').html(), 'Welcome!');
   });
 
   // var selectGraceHopper = function(){

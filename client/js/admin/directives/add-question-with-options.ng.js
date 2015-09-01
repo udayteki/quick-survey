@@ -1,4 +1,4 @@
-angular.module('quick-survey').directive('addRadioQuestionOptions', function () {
+angular.module('quick-survey').directive('addQuestionWithOptions', function () {
   return {
     restrict: 'A',
     scope: {
@@ -26,6 +26,6 @@ angular.module('quick-survey').directive('addRadioQuestionOptions', function () 
         });
       };
     },
-    templateUrl: 'client/js/admin/directives/add-radio-question-options.ng.html',
+    templateUrl: 'client/js/admin/directives/add-question-with-options.ng.html',
   };
 });

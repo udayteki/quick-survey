@@ -1,7 +1,7 @@
 <ul>
   <li ng-repeat="option in question.options | orderBy:'type' track by $index">
     <div class="form-align-group" ng-if="option.type === 'normal'">
-      <label for="{{ }}"><input type="radio" disabled/></label>
+      <label for="{{ }}"><input type="{{ question.type }}" disabled/></label>
       <input id="{{ }}"
         type="text"
         ng-model="option.value"

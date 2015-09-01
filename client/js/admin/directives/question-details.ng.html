@@ -23,7 +23,13 @@
     </div>
     <div ng-if="question.type === 'radio'"
       class="add-checkbox-question-options"
-      add-radio-question-options
+      add-question-with-options
+      question="question"
+      existing-options="question.options"
+    ></div>
+    <div ng-if="question.type === 'checkbox'"
+      class="add-checkbox-question-options"
+      add-question-with-options
       question="question"
       existing-options="question.options"
     ></div>

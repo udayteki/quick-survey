@@ -6,7 +6,7 @@ angular.module('quick-survey').directive('addQuestionWithOptions', function () {
       existingOptions: '='
     },
     controller: function ($scope) {
-
+      console.log('loaded');
       if (!$scope.existingOptions) {
         $scope.question.options = [{
           'value': '',

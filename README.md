@@ -4,7 +4,7 @@
 
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/simonv3/quick-survey/tree/develop)
 
-![quick-survey](http://i.imgur.com/MaYWf4J.png)
+![quick-survey](http://i.imgur.com/AYn4Jd4.png)
 ![quick-survey-results](http://i.imgur.com/4elbHfe.png)
 
 # Goals

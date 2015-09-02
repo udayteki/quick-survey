@@ -3,14 +3,23 @@ Sites = new Mongo.Collection("sites");
 Sites.allow({
 
   insert: function (userId, response) {
-    return Meteor.user().is_admin;
+    if (Meteor.user()) {
+      return Meteor.user().is_admin;
+    }
+    return false;
   },
 
   update: function (userId, response, fields, modifier) {
-    return Meteor.user().is_admin;
+    if (Meteor.user()) {
+      return Meteor.user().is_admin;
+    }
+    return false;
   },
 
   remove: function (userId, response) {
-    return Meteor.user().is_admin;
+    if (Meteor.user()) {
+      return Meteor.user().is_admin;
+    }
+    return false;
   }
 });

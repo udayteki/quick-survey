@@ -5,12 +5,12 @@
   "keywords": ["meteor", "angular-meteor", "survey"],
   "env": {
     "ROOT_URL": {
-      "description": "The full URL of your app (by default, http://appname.herokuapp.com).",
-      "required": false
+      "description": "The full URL of your app (by default, http://appname.herokuapp.com)."
     },
     "BUILDPACK_URL": "https://github.com/simonv3/meteor-buildpack-horse.git"
   },
   "addons": [
-    "mongolab"
+    "mongolab",
+    "postmark"
   ]
 }

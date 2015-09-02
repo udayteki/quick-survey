@@ -17,7 +17,7 @@ angular.module('quick-survey').controller('SurveyCtrl',
     };
 
     var site = $meteor.object(Sites, {has_been_set_up: true}, false);
-
+    console.log(site);
     if (site.has_been_set_up === undefined &&
       !$rootScope.currentUser &&
       !$rootScope.loggingIn) {

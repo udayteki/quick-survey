@@ -68,10 +68,19 @@ angular.module("quick-survey").config(['$urlRouterProvider', '$stateProvider', '
                   $meteor.subscribe('users')
                 ])
                 .then(function() {
-                  var site = $meteor.object(Sites, {has_been_set_up: true}, false)
+                  var site = $meteor.collection(Sites, false)[0]
                   var numOfAdmin = $meteor.object(Counts ,'numberOfAdmin', false);
+                  console.log(numOfAdmin.count);
+                  console.log(site);
                   if (numOfAdmin.count !== 0 && site.has_been_set_up === true) {
-                    reject();
+                    reject('SET_UP_COMPLETE');
+                  } else if (numOfAdmin.count !== 0) {
+                    site = $meteor.object(Sites,
+                                          site._id,
+                                          false).subscribe('sites');
+                    site.has_been_set_up = true;
+                    site.save();
+                    reject('UNAUTHORIZED');
                   } else {
                     resolve();
                   }

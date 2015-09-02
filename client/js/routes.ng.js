@@ -57,17 +57,25 @@ angular.module("quick-survey").config(['$urlRouterProvider', '$stateProvider', '
         controller: 'SetupCtrl',
         controllerAs: 'sc',
         resolve: {
-          'currentUser': ['$meteor', function($meteor) {
-            return $meteor.waitForUser();
-          }],
-          'setup': ['$meteor', '$state', '$rootScope', function($meteor, $state, $rootScope) {
-            $meteor.subscribe('users')
-              .then(function() {
-                var numOfAdmin = $meteor.object(Counts ,'numberOfAdmin', false);
-                if (numOfAdmin.count !== 0) {
-                  $rootScope.has_been_set_up = true;
-                  $state.go('active-survey');
-                }
+          // 'currentUser': ['$meteor', function($meteor) {
+          //   return $meteor.waitForUser();
+          // }],
+          'checkAdmin': ['$meteor', '$state', '$q', '$rootScope',
+            function($meteor, $state, $q, $rootScope) {
+              return $q(function(resolve, reject) {
+                $q.all([
+                  $meteor.subscribe('sites'),
+                  $meteor.subscribe('users')
+                ])
+                .then(function() {
+                  var site = $meteor.object(Sites, {has_been_set_up: true}, false)
+                  var numOfAdmin = $meteor.object(Counts ,'numberOfAdmin', false);
+                  if (numOfAdmin.count !== 0 && site.has_been_set_up === true) {
+                    reject();
+                  } else {
+                    resolve();
+                  }
+                });
               });
           }]
         }

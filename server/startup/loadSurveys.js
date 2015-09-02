@@ -11,9 +11,5 @@ Meteor.startup(function () {
     };
     Surveys.insert(survey);
   }
-
-  Accounts.config({
-    'sendVerificationEmail': true,
-  });
 });
 

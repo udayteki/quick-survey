@@ -11,6 +11,14 @@ angular.module('quick-survey').controller('AdminCtrl', function ($scope, $meteor
     $scope.activeSurvey = $meteor.object(Surveys, {active: true}, false);
   });
 
+  $scope.sendTestEmail = function() {
+    Meteor.call('sendEmail',
+            $scope.currentUser.emails[0].address,
+            $scope.currentUser.emails[0].address,
+            'Hello from Meteor!',
+            'This is a test of Email.send.');
+  };
+
   $scope.clearResults = function() {
     var success = confirm("This will remove all results so far, are you sure?");
     if (success) {

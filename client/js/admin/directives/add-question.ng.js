@@ -24,6 +24,7 @@ angular.module('quick-survey').directive('addQuestion', function () {
         $scope.question = {
           'required': false,
         };
+        $scope.showAddQuestionForm = false;
         $scope.survey.save();
       };
     },

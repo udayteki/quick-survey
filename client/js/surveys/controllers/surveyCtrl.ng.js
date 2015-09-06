@@ -17,7 +17,7 @@ angular.module('quick-survey').controller('SurveyCtrl',
     };
 
     var site = $meteor.object(Sites, {has_been_set_up: true}, false);
-    console.log(site);
+
     if (site.has_been_set_up === undefined &&
       !$rootScope.currentUser &&
       !$rootScope.loggingIn) {
@@ -30,6 +30,19 @@ angular.module('quick-survey').controller('SurveyCtrl',
   $scope.responses = $meteor.collection(Responses);
 
   $scope.submit = function(newResponse) {
+
+    newResponse.questions.forEach(function(question) {
+      if (question.type === 'checkbox') {
+        question.options.forEach(function(opt) {
+          if (opt.type === 'other' &&
+              opt.value !== '' &&
+              opt.value !== undefined) {
+            question.answer.push(opt.value);
+          }
+        });
+      }
+    });
+
     newResponse.user = $rootScope.currentUser._id;
     $scope.responses.save(newResponse)
       .then(function(result) {

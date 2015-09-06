@@ -5,8 +5,16 @@
 }
 
 .survey-details {
+
   th.description {
-    width: 50%;
+    width: 45%;
+  }
+  th.name {
+    width: 20%;
+  }
+
+  td {
+    vertical-align: top;
   }
 
   textarea {
@@ -26,21 +34,27 @@
   }
 }
 
-.add-checkbox-question-options {
-  margin: 1rem auto;
-  width: 80%;
-  padding: 1rem 2rem;
-  border: 1px solid fadein(@background-color, 5%);
+.add-question-with-options {
+  padding: 1.5rem 8.5rem;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  border-top: 1px solid rgba(0,0,0,0.1);
   box-sizing: border-box;
+  margin: 1rem auto;
 
   ul {
     list-style: none;
   }
 
+  .form-align-group {
+    margin-left: 2rem;
+  }
+
   .form-align-group label {
-    width: 4rem;
-    text-align: right;
-    padding-right: .5rem;
-    padding-top: .25rem;
+    width: 2.5rem;
+    padding-top: .15rem;
+  }
+
+  .option-control {
+    margin-left: 2rem;
   }
 }

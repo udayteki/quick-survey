@@ -4,45 +4,28 @@
     class="question"
     ng-class="{'required': question.required }"
     for="{{ question._id }}-answer"></label>
+  <small>{{ question.helpText }}</small>
   <div class="answer">
-    <span ng-if="question.type !== 'textarea' && question.type !== 'radio'">
-      <input type="{{ question.type }}"
+
+    <input type="{{ question.type }}"
+      ng-if="question.type !== 'textarea' && question.type !== 'radio' && question.type !== 'checkbox'"
       ng-model="question.answer"
       ng-required="question.required"
       id="{{ question._id}}-answer"/>
-    </span>
-    <span ng-if="question.type === 'textarea'">
-      <textarea ng-model="question.answer"
-        ng-required="question.required"
-        id="{{ question._id}}-answer"></textarea>
-    </span>
-    <span ng-if="question.type === 'radio'">
-      <label ng-repeat="option in question.options | orderBy:'type' track by $index">
-        <input ng-if="option.type !== 'other'"
-          ng-model="question.answer"
-          ng-value="option"
-          name="{{ question.question }}"
-          ng-change="optionChanged(option)"
-          type="radio"/>
 
-        <span ng-if="option.type === 'other'">
-        <input ng-model="question.answer"
-          ng-value="option"
-          name="{{ question.question }}"
-          type="radio"
-          ng-change="optionChanged(option)"
-          /> Other:
-        </span>
+    <textarea ng-if="question.type === 'textarea'"
+      ng-model="question.answer"
+      ng-required="question.required"
+      id="{{ question._id}}-answer"></textarea>
 
-        <input ng-if="option.type === 'other'"
-          type="text"
-          class="other"
-          ng-model="option.value"
-          ng-disabled="!choosingOther"/>
-        <span ng-if="option.type !== 'other'">
-        {{option.value}}
-        </span>
-      </label>
+    <span ng-if="question.type === 'radio'"
+      survey-question-radio
+      question="question">
+    </span>
+
+    <span ng-if="question.type === 'checkbox'"
+      survey-question-checkbox
+      question="question">
     </span>
   </div>
 </span>

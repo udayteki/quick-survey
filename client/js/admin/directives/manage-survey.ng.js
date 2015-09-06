@@ -2,7 +2,7 @@ angular.module('quick-survey').directive('manageSurvey', function () {
   return {
     restrict: 'A',
     scope: {
-      survey: '=',
+      survey: '='
     },
     controller: function ($scope) {
 

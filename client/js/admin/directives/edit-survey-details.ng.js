@@ -3,6 +3,7 @@ angular.module('quick-survey').directive('editSurveyDetails', function () {
     restrict: 'A',
     scope: {
       survey: '=',
+      form: '='
     },
     controller: function ($scope) {
       $scope.save = function(survey) {

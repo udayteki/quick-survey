@@ -83,14 +83,19 @@ p {
 table {
   width: 100%;
   border-collapse: collapse;
+  background-color: @input-box-color;
+  .box-shadow(0 0 4px fadeout(@text-color, 90%));
 }
 
 th, td {
   padding: .25rem .5rem;
   text-align: left;
-  border: 1px solid fadein(@background-color, 5%);
 }
 
-tr:nth-child(odd) td {
-  background-color: @input-box-color;
+td {
+  border-top: 1px solid fadein(@background-color, 5%);
+}
+
+td:nth-child(odd) td {
+  background-color: darken(@input-box-color, 10%);
 }

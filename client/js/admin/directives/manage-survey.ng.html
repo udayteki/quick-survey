@@ -1,18 +1,19 @@
-<form ng-if="survey" class="survey-details">
+<form ng-if="survey" class="survey-details" name="surveyForm">
   <h2>Survey Details</h2>
   <table>
     <thead>
       <tr>
-        <th></th>
+        <th class="name">Name</th>
         <th class="description">Description</th>
         <th>Active</th>
-        <th>Require Sign In</th>
+        <th>Require Sign In?</th>
         <th></th>
       </tr>
     </thead>
     <tbody>
       <tr edit-survey-details
-        survey="survey">
+        survey="survey"
+        form="surveyForm">
       </tr>
     </tbody>
   </table>

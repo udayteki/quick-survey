@@ -1,6 +1,6 @@
 <td>
   <label for="survey-name" class="hidden"></label>
-  <input id="survey-name" type="text" ng-model="survey.name"/>
+  <textarea id="survey-name" ng-model="survey.name"></textarea>
 </td>
 <td>
   <label for="survey-description" class="hidden"></label>
@@ -15,5 +15,6 @@
   <input id="survey-requires-sign-in" type="checkbox" ng-model="survey.require_sign_in"/>
 </td>
 <td>
+  <span ng-if="!form.$pristine">Save your changes!</span>
   <button ng-click="save(survey)">Save</button>
 </td>

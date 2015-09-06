@@ -16,16 +16,12 @@
   <tr ng-repeat="response in responses">
     <td>{{ $index + 1 }}</td>
     <td ng-repeat="question in response.questions">
-      <span ng-if="question.type !== 'radio'">
-        {{ question.answer }}
-      </span>
-      <span ng-if="question.type === 'radio'">
-        {{ question.answer.value }}
-      </span>
+      {{ question.answer }}
     </td>
   </tr>
   </tbody>
 </table>
+<small><a ng-click="exportAllResponses()" title="export all responses"><i class="icon-export"></i> Download CSV</a></small>.
 <small>
   <a ng-click="sendTestEmail()" title="Send test email">Send test email</a>.
 </small>

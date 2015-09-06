@@ -11,6 +11,30 @@ angular.module('quick-survey').controller('AdminCtrl', function ($scope, $meteor
     $scope.activeSurvey = $meteor.object(Surveys, {active: true}, false);
   });
 
+  $scope.exportAllResponses = function() {
+    var self = this;
+    Meteor.call("exportAllResponses", function(error, data) {
+
+      if ( error ) {
+        alert(error);
+        return false;
+      }
+
+      var csv = Papa.unparse(data);
+      self._downloadCSV(csv);
+    });
+  };
+
+  $scope._downloadCSV = function(csv) {
+    var blob = new Blob([csv]);
+    var a = window.document.createElement("a");
+      a.href = window.URL.createObjectURL(blob, {type: "text/plain"});
+      a.download = "responses.csv";
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+  };
+
   $scope.sendTestEmail = function() {
     Meteor.call('sendEmail',
             $scope.currentUser.emails[0].address,
@@ -33,10 +57,10 @@ angular.module('quick-survey').controller('AdminCtrl', function ($scope, $meteor
         $scope.users = $meteor.collection(Meteor.users);
 
         $scope.users.forEach(function(user) {
-          var user = $meteor.object(Meteor.users, user._id, false).subscribe('users');
-          user.has_submitted = false;
-          user.save();
-          console.log(user);
+          var fetchedUser = $meteor.object(Meteor.users, user._id, false);
+          fetchedUser = fetchedUser.subscribe('users');
+          fetchedUser.has_submitted = false;
+          fetchedUser.save();
         });
       });
     }

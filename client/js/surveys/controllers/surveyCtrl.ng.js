@@ -40,9 +40,10 @@ angular.module('quick-survey').controller('SurveyCtrl',
             question.answer.push(opt.value);
           }
         });
+      } else if (question.type === 'radio') {
+        question.answer = question.answer.value;
       }
     });
-
     newResponse.user = $rootScope.currentUser._id;
     $scope.responses.save(newResponse)
       .then(function(result) {

@@ -15,6 +15,7 @@ angular.module('quick-survey').run(function($rootScope, $state) {
   });
 
   $rootScope.$watch('currentUser', function() {
+    console.log('currentUser', $rootScope.currentUser);
     if (!$rootScope.loggingIn && $rootScope.currentUser === null) {
       $state.go('active-survey');
     }
@@ -22,10 +23,13 @@ angular.module('quick-survey').run(function($rootScope, $state) {
 
 });
 
-angular.module("quick-survey").config(['$urlRouterProvider', '$stateProvider', '$locationProvider',
-  function ($urlRouterProvider, $stateProvider, $locationProvider) {
+angular.module("quick-survey").config(
+  function ($urlRouterProvider, $stateProvider, $locationProvider,
+      $urlMatcherFactoryProvider) {
 
     $locationProvider.html5Mode(true);
+
+    $urlMatcherFactoryProvider.strictMode(false);
 
     $stateProvider
       .state('active-survey', {
@@ -82,7 +86,42 @@ angular.module("quick-survey").config(['$urlRouterProvider', '$stateProvider', '
               });
           }]
         }
+      })
+
+      .state('login', {
+        url: '/login',
+        templateUrl: 'client/js/users/views/login.ng.html',
+        controller: 'LoginCtrl',
+        controllerAs: 'lc'
+      })
+      .state('register',{
+        url: '/register',
+        templateUrl: 'client/js/users/views/register.ng.html',
+        controller: 'RegisterCtrl',
+        controllerAs: 'rc'
+      })
+      .state('register-success', {
+        url: '/register/success',
+        templateUrl: 'client/js/users/views/register-success.ng.html',
+      })
+      .state('reset-password', {
+        url: '/reset-password',
+        templateUrl: 'client/js/users/views/reset-password.ng.html',
+        controller: 'ResetPasswordCtrl',
+        controllerAs: 'rpc'
+      })
+      .state('logout', {
+        url: '/logout',
+        resolve: {
+          "logout": ['$meteor', '$state', function($meteor, $state) {
+            return $meteor.logout().then(function(){
+              $state.go('active-survey');
+            }, function(err){
+              console.log('logout error - ', err);
+            });
+          }]
+        }
       });
 
     $urlRouterProvider.otherwise("/");
-  }]);
+  });

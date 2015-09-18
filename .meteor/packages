@@ -8,7 +8,6 @@ meteor-platform
 urigo:angular
 angularui:angular-ui-router
 accounts-password
-accounts-ui
 less
 tmeasday:publish-counts
 oshai:angular-marked

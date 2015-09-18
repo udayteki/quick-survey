@@ -17,7 +17,7 @@
           ng-hide="$root.currentUser">Log in</a>
         <a class="button"
           ng-href="/register"
-          ng-hide="$root.currentUser">Register</a>
+          ng-show="!$root.currentUser && activeSurvey.require_sign_in">Register</a>
         <div class="username"
           ng-show="$root.currentUser">
           Hello <span ng-bind="$root.currentUser | displayName"></span>

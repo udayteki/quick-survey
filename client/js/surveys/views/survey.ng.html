@@ -1,6 +1,6 @@
 <div ng-if="(currentUser || !activeSurvey.require_sign_in) && activeSurvey.active" class="frontend">
   <h1 ng-bind="activeSurvey.name"></h1>
-  <form ng-if="!currentUser.has_submitted" class="survey" name="survey">
+  <form ng-if="!currentUser.has_submitted && !has_submitted" class="survey" name="survey">
     <div class="description"
       marked="activeSurvey.description">
     </div>
@@ -15,7 +15,7 @@
       ng-click="submit(newResponse)">Submit</button>
   </form>
 
-  <div ng-if="currentUser.has_submitted" class="has-submitted empty-state">
+  <div ng-if="currentUser.has_submitted || has_submitted" class="has-submitted empty-state">
     Thanks for submitting your thoughts!
   </div>
 </div>

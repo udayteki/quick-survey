@@ -26,11 +26,11 @@ angular.module('quick-survey').controller('SurveyCtrl',
   });
 
   $scope.has_submitted = Session.get('has_submitted');
+  console.log($scope.has_submitted);
 
   $scope.responses = $meteor.collection(Responses);
 
   $scope.submit = function(newResponse) {
-
     newResponse.questions.forEach(function(question) {
       if (question.type === 'checkbox') {
         question.options.forEach(function(opt) {
@@ -44,15 +44,21 @@ angular.module('quick-survey').controller('SurveyCtrl',
         question.answer = question.answer.value;
       }
     });
-    newResponse.user = $rootScope.currentUser._id;
+    if ($scope.activeSurvey.require_sign_in) {
+      newResponse.user = $rootScope.currentUser._id;
+    }
     $scope.responses.save(newResponse)
       .then(function(result) {
-        $scope.user = $meteor.object(Meteor.users,
+        console.log($scope.activeSurvey);
+        if ($scope.activeSurvey.require_sign_in) {
+          $scope.user = $meteor.object(Meteor.users,
                                      $rootScope.currentUser._id,
                                      false).subscribe('users');
-        $scope.user.has_submitted = true;
-        $scope.user.save();
-        Session.set('has_submitted', true);
+          $scope.user.has_submitted = true;
+          $scope.user.save();
+        }
+        Session.setPersistent('has_submitted', true);
+        console.log(Session.get('has_submitted'));
       }, function(error) {
         console.log('error');
       });

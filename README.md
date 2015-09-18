@@ -10,8 +10,8 @@
 # Goals
 
 * [x] One click install.
-* [ ] Manage questions. Done delete and create - still need to make it possible to edit questions. Add more question types.
-* [ ] Optional log in and verification (through Github / Twitter) of a survey. Right now a log in is required, but there's no actual verification of the log in.
+* [x] Manage your own survey with a variety of question types.
+* [ ] Optional log in and verification (through e-mail / GitHub / Twitter) of a survey. Still to do: GitHub / Twitter / Etc. 
 
 # To deploy
 

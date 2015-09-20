@@ -8,28 +8,14 @@
     <div class="nav" ng-controller="NavBarCtrl">
       <div class="admin" ng-if="is_admin">
         <a href="/">survey</a>
+        <a href="/manage">manage</a>
         <a href="/admin">admin</a>
       </div>
-      <div class="registration"
-        ng-if="state.current.name !== 'setup'">
-        <a class="button"
-          ng-href="/login"
-          ng-hide="$root.currentUser">Log in</a>
-        <a class="button"
-          ng-href="/register"
-          ng-show="!$root.currentUser && activeSurvey.require_sign_in">Register</a>
-        <div class="username"
-          ng-show="$root.currentUser">
-          Hello <span ng-bind="$root.currentUser | displayName"></span>
-        </div>
-        <a class="button"
-          ng-href="/logout"
-          ng-show="$root.currentUser">Log out</a>
-      </div>
+      <div mr-account-buttons></div>
     </div>
     <div ui-view
       class="container small-row"
-      ng-class="{ admin: $state.includes('admin') }">
+      ng-class="{ admin: $state.includes('manage') }">
     </div>
   </div>
   <div ng-show="loading">
@@ -37,6 +23,7 @@
     <span></span>
     <span></span>
   </div>
+  <div log-in></div>
   <footer class="site-footer">
     <div class="wide-row footer-wrapper">
       <img src="/images/squirrel-small.png" alt="Quick Survey Squirrel Logo"/>

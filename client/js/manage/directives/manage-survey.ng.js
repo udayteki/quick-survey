@@ -20,6 +20,6 @@ angular.module('quick-survey').directive('manageSurvey', function () {
         $scope.addingQuestion = !$scope.addingQuestion;
       };
     },
-    templateUrl: 'client/js/admin/directives/manage-survey.ng.html',
+    templateUrl: 'client/js/manage/directives/manage-survey.ng.html',
   };
 });

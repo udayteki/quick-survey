@@ -11,7 +11,7 @@ angular.module('quick-survey').controller('SetupCtrl',
           $scope.user = $meteor.object(Meteor.users, $rootScope.currentUser._id, false).subscribe('users');
           $scope.user.is_admin = true;
           $scope.user.save();
-          $state.go('admin');
+          $state.go('manage');
         },
 
         function (err) {

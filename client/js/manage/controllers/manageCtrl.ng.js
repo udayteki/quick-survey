@@ -1,5 +1,6 @@
 
-angular.module('quick-survey').controller('AdminCtrl', function ($scope, $meteor, $state, $rootScope) {
+angular.module('quick-survey').controller('ManageCtrl',
+  function ($scope, $meteor, $state, $rootScope) {
 
   $scope.$state = $state;
 

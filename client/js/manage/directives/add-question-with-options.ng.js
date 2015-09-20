@@ -26,6 +26,6 @@ angular.module('quick-survey').directive('addQuestionWithOptions', function () {
         });
       };
     },
-    templateUrl: 'client/js/admin/directives/add-question-with-options.ng.html',
+    templateUrl: 'client/js/manage/directives/add-question-with-options.ng.html',
   };
 });

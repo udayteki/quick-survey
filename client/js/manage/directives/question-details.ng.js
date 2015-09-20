@@ -35,6 +35,6 @@ angular.module('quick-survey').directive('questionDetails', function () {
         });
       };
     },
-    templateUrl: 'client/js/admin/directives/question-details.ng.html',
+    templateUrl: 'client/js/manage/directives/question-details.ng.html',
   };
 });

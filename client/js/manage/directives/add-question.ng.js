@@ -28,6 +28,6 @@ angular.module('quick-survey').directive('addQuestion', function () {
         $scope.survey.save();
       };
     },
-    templateUrl: 'client/js/admin/directives/add-question.ng.html',
+    templateUrl: 'client/js/manage/directives/add-question.ng.html',
   };
 });

@@ -1,3 +1,3 @@
-Meteor.publish("sites", function () {
-  return Sites.find();
-});
+// Meteor.publish("sites", function () {
+//   return Sites.find();
+// });

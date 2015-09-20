@@ -10,6 +10,6 @@ angular.module('quick-survey').directive('editSurveyDetails', function () {
         survey.save();
       };
     },
-    templateUrl: 'client/js/admin/directives/edit-survey-details.ng.html',
+    templateUrl: 'client/js/manage/directives/edit-survey-details.ng.html',
   };
 });

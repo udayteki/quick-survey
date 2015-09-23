@@ -18,6 +18,8 @@ angular.module('quick-survey').controller('SurveyCtrl',
 
     var site = $meteor.object(Sites, {has_been_set_up: true}, false);
 
+    // TODO: This has to be moved to the admin package
+
     if (site.has_been_set_up === undefined &&
       !$rootScope.currentUser &&
       !$rootScope.loggingIn) {

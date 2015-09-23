@@ -51,7 +51,9 @@ routepolicy@1.0.5
 service-configuration@1.0.4
 session@1.1.0
 sha@1.0.3
-simonv3:meteor-running@0.0.1
+simonv3:meteor-running@0.0.4
+simonv3:meteor-running-admin@0.0.1
+simonv3:meteor-running-models@0.0.1
 spacebars@1.0.6
 spacebars-compiler@1.0.6
 srp@1.0.3

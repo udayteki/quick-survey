@@ -27,6 +27,8 @@ angular.module('quick-survey').controller('SurveyCtrl',
     }
   });
 
+  // $meteor.session('has_submitted').bind($scope, 'has_submitted');
+
   $scope.has_submitted = Session.get('has_submitted');
   console.log($scope.has_submitted);
 
@@ -51,7 +53,6 @@ angular.module('quick-survey').controller('SurveyCtrl',
     }
     $scope.responses.save(newResponse)
       .then(function(result) {
-        console.log($scope.activeSurvey);
         if ($scope.activeSurvey.require_sign_in) {
           $scope.user = $meteor.object(Meteor.users,
                                      $rootScope.currentUser._id,
@@ -59,7 +60,8 @@ angular.module('quick-survey').controller('SurveyCtrl',
           $scope.user.has_submitted = true;
           $scope.user.save();
         }
-        Session.setPersistent('has_submitted', true);
+        $scope.has_submitted = true;
+        Session.setPersistent('has_submitted', 1);
         console.log(Session.get('has_submitted'));
       }, function(error) {
         console.log('error');

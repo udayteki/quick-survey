@@ -15,7 +15,7 @@
     </div>
     <div ui-view
       class="container small-row"
-      ng-class="{ admin: $state.includes('manage') }">
+      ng-class="{ admin: $state.includes('manage') || $state.includes('admin') }">
     </div>
   </div>
   <div ng-show="loading">

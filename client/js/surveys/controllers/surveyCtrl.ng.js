@@ -2,6 +2,8 @@ angular.module('quick-survey').controller('SurveyCtrl',
   function ($scope, $q, $rootScope, $meteor, $state) {
   $scope.loaded = false;
 
+  $scope.$state = $state;
+
   $q.all([
     $scope.$meteorSubscribe('surveys'),
     $scope.$meteorSubscribe('users'),

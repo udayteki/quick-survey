@@ -11,7 +11,7 @@
 
 * [x] One click install.
 * [x] Manage your own survey with a variety of question types.
-* [ ] Optional log in and verification (through e-mail / GitHub / Twitter) of a survey. Still to do: GitHub / Twitter / Etc. 
+* [ ] Optional log in and verification (through e-mail / GitHub / Twitter) of a survey. Still to do: GitHub / Twitter / Etc.
 
 # To deploy
 

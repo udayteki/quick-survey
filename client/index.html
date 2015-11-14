@@ -14,8 +14,8 @@
       <div mr-account-buttons></div>
     </div>
     <div ui-view
-      class="container small-row"
-      ng-class="{ admin: $state.includes('manage') || $state.includes('admin') }">
+      class="container wide-row"
+      ng-class="{ 'small-row': $state.includes('index') }">
     </div>
   </div>
   <div ng-show="loading">

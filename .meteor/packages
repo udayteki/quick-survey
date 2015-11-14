@@ -4,8 +4,6 @@
 # 'meteor add' and 'meteor remove' will edit this file for you,
 # but you can also edit it by hand.
 
-meteor-platform
-urigo:angular
 angularui:angular-ui-router
 accounts-password
 less
@@ -15,3 +13,18 @@ email
 harrison:papa-parse
 u2622:persistent-session
 simonv3:meteor-running
+angular
+standard-minifiers
+meteor-base
+mobile-experience
+mongo
+blaze-html-templates
+session
+jquery
+tracker
+logging
+reload
+random
+ejson
+spacebars
+check

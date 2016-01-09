@@ -6,12 +6,14 @@
 <body ng-app="quick-survey">
   <div class="page-wrap">
     <div class="nav" ng-controller="NavBarCtrl">
+
       <div class="admin" ng-if="is_admin">
         <a href="/">survey</a>
         <a href="/manage">manage</a>
-        <a href="/admin">admin</a>
+        <a ng-if="!on_sandstorm" href="/admin">admin</a>
       </div>
-      <div mr-account-buttons></div>
+      <div ng-if="!on_sandstorm" mr-account-buttons></div>
+
     </div>
     <div ui-view
       class="container wide-row"

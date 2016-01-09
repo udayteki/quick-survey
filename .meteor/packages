@@ -12,13 +12,12 @@ oshai:angular-marked
 email
 harrison:papa-parse
 u2622:persistent-session
+angular@1.3.2
 simonv3:meteor-running
-angular
 standard-minifiers
 meteor-base
 mobile-experience
 mongo
-blaze-html-templates
 session
 jquery
 tracker
@@ -28,3 +27,4 @@ random
 ejson
 spacebars
 check
+kenton:accounts-sandstorm

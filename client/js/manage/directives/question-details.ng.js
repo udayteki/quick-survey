@@ -27,12 +27,15 @@ angular.module('quick-survey').directive('questionDetails', function () {
         }
       };
 
-      $scope.save = function(question) {
-        $scope.survey.save().then(function(numberOfDocs){
-          console.log('save success doc affected ', numberOfDocs);
-        }, function(error){
-          console.log('save error', error);
-        });
+      $scope.save = function() {
+        console.log($scope.survey.questions)
+        Surveys.update($scope.survey._id,
+          {$set: {
+            questions: angular.copy($scope.survey.questions)
+          }}, function(err, resp) {
+            if (err) console.log('error', err);
+            console.log('success', resp);
+          })
       };
     },
     templateUrl: 'client/js/manage/directives/question-details.ng.html',

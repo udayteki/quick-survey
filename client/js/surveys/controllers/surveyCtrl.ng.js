@@ -1,40 +1,40 @@
 angular.module('quick-survey').controller('SurveyCtrl',
-  function ($scope, $q, $rootScope, $meteor, $state) {
+  function ($scope, $q, $rootScope, $meteor, $state, surveys) {
   $scope.loaded = false;
 
   $scope.$state = $state;
 
-  $q.all([
-    $scope.$meteorSubscribe('surveys'),
-    $scope.$meteorSubscribe('users'),
-    $scope.$meteorSubscribe('sites'),
-    ])
-  .then(function(responses) {
-    $scope.loaded = true;
-    $scope.activeSurvey = $meteor.object(Surveys, {active: true}, false);
-    // ToDo, check for the survey's active status.
-    $scope.newResponse = {
-      'survey': $scope.activeSurvey,
-      'questions': angular.copy($scope.activeSurvey.questions)
-    };
+  $scope.helpers({
+    activeSurvey: function() {
+      var surveys = Surveys.find({active: true}).fetch()
+      if (surveys.length > 0) {
+        var survey = Surveys.findOne(surveys[0]._id);
+        if (survey.questions.length > 0) {
+          return survey;
+        } else {
+          if ($rootScope.is_admin) {
+            $state.go('manage');
+          }
+          return null;
+        }
 
-    var site = $meteor.object(Sites, {has_been_set_up: true}, false);
-
-    // TODO: This has to be moved to the admin package
-
-    if (site.has_been_set_up === undefined &&
-      !$rootScope.currentUser &&
-      !$rootScope.loggingIn) {
-      $state.go('setup');
+      } else {
+        $state.go('manage');
+        return null;
+      }
     }
   });
+
+  $scope.newResponse = {
+    'survey': $scope.activeSurvey,
+    'questions': $scope.activeSurvey ? angular.copy($scope.activeSurvey.questions) : []
+  };
+
+  $scope.loaded = true;
 
   // $meteor.session('has_submitted').bind($scope, 'has_submitted');
 
   $scope.has_submitted = Session.get('has_submitted');
-  console.log($scope.has_submitted);
-
-  $scope.responses = $meteor.collection(Responses);
 
   $scope.submit = function(newResponse) {
     newResponse.questions.forEach(function(question) {
@@ -50,24 +50,17 @@ angular.module('quick-survey').controller('SurveyCtrl',
         question.answer = question.answer.value;
       }
     });
+
     if ($scope.activeSurvey.require_sign_in) {
       newResponse.user = $rootScope.currentUser._id;
     }
-    $scope.responses.save(newResponse)
-      .then(function(result) {
-        if ($scope.activeSurvey.require_sign_in) {
-          $scope.user = $meteor.object(Meteor.users,
-                                     $rootScope.currentUser._id,
-                                     false).subscribe('users');
-          $scope.user.has_submitted = true;
-          $scope.user.save();
-        }
+
+    Meteor.call('submitResponse', angular.copy(newResponse), function(err, id) {
+      $scope.$apply(function() {
         $scope.has_submitted = true;
-        Session.setPersistent('has_submitted', 1);
-        console.log(Session.get('has_submitted'));
-      }, function(error) {
-        console.log('error');
-      });
+      })
+      Session.setPersistent('has_submitted', 1)
+    })
   };
 
 });

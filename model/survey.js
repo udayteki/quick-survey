@@ -3,9 +3,12 @@ Surveys = new Mongo.Collection("surveys");
 Surveys.allow({
 
   insert: function (userId, survey) {
-    if (Meteor.user().is_admin) {
+    if (Meteor.user().is_admin)
       return true;
-    }
+
+    var sandstorm = Meteor.user().services.sandstorm;
+    if (sandstorm && sandstorm.permissions[0] === 'owner')
+      return true;
     return false;
   },
 
@@ -13,6 +16,11 @@ Surveys.allow({
     if (Meteor.user().is_admin) {
       return true;
     }
+
+    var sandstorm = Meteor.user().services.sandstorm;
+    if (sandstorm && sandstorm.permissions[0] === 'owner')
+      return true;
+
     return false;
   },
 
@@ -20,6 +28,11 @@ Surveys.allow({
     if (Meteor.user().is_admin) {
       return true;
     }
+
+    var sandstorm = Meteor.user().services.sandstorm;
+    if (sandstorm && sandstorm.permissions[0] === 'owner')
+      return true;
+
     return false;
   }
 

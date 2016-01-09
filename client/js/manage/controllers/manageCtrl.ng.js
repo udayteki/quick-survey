@@ -1,15 +1,18 @@
 
 angular.module('quick-survey').controller('ManageCtrl',
-  function ($scope, $meteor, $state, $rootScope) {
+  function ($scope, $reactive, $state, $rootScope, activeSurvey, responses) {
 
   $scope.$state = $state;
+  $scope.activeSurveyId = activeSurvey ? activeSurvey._id : null;
 
-  $scope.$meteorSubscribe('responses').then(function() {
-    $scope.responses = $meteor.collection(Responses);
-  });
-
-  $scope.$meteorSubscribe('surveys').then(function() {
-    $scope.activeSurvey = $meteor.object(Surveys, {active: true}, false);
+  $scope.helpers({
+    responses: function() {
+      return Responses.find({})
+    },
+    activeSurvey: function() {
+      if ($scope.activeSurveyId)
+        return Surveys.findOne($scope.activeSurveyId);
+    }
   });
 
   $scope.exportAllResponses = function() {
@@ -47,22 +50,16 @@ angular.module('quick-survey').controller('ManageCtrl',
   $scope.clearResults = function() {
     var success = confirm("This will remove all results so far, are you sure?");
     if (success) {
-      $scope.responses.remove();
+      Meteor.call('resetResponses')
     }
   };
 
   $scope.resetUsers = function() {
     var success = confirm("This will set all users to not completed the survey");
     if (success) {
-      $scope.$meteorSubscribe('users').then(function() {
-        $scope.users = $meteor.collection(Meteor.users);
-
-        $scope.users.forEach(function(user) {
-          var fetchedUser = $meteor.object(Meteor.users, user._id, false);
-          fetchedUser = fetchedUser.subscribe('users');
-          fetchedUser.has_submitted = false;
-          fetchedUser.save();
-        });
+      Meteor.call('resetUsers', function(err) {
+        if (err) console.log('error', err);
+        Session.setPersistent('has_submitted', 0);
       });
     }
   };

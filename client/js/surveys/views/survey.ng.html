@@ -2,7 +2,7 @@
   <h1 ng-bind="activeSurvey.name"></h1>
   <form ng-if="!currentUser.has_submitted && !has_submitted" class="survey" name="survey">
     <div class="description"
-      marked="activeSurvey.description">
+      ng-bind="activeSurvey.description">
     </div>
     <ul class="survey-question-list">
       <li class="survey-question"
@@ -20,7 +20,7 @@
   </div>
 </div>
 
-<div ng-if="!activeSurvey.active && loaded" class="empty-state">
+<div ng-if="activeSurvey === null && !activeSurvey.active && loaded" class="empty-state">
   There is no active survey published yet.
 </div>
 
@@ -28,6 +28,6 @@
   Sign in or create an account to take the survey.
 </div>
 
-<div ng-if="$root.loggingIn || !loaded" class="empty-state">
+<div ng-if="!loaded" class="empty-state">
   Loading...
 </div>

@@ -16,9 +16,6 @@ angular.module('quick-survey').directive('manageSurvey', function () {
         // ToDo: Add more question types as the question directive supports them.
       ];
 
-      $scope.toggleAddingQuestion = function() {
-        $scope.addingQuestion = !$scope.addingQuestion;
-      };
     },
     templateUrl: 'client/js/manage/directives/manage-survey.ng.html',
   };

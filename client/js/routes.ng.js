@@ -111,9 +111,8 @@ angular.module("quick-survey").config(
         $rootScope.on_sandstorm = true;
       }
     });
-
     Meteor.call('isAdmin', function(err, resp) {
-      console.log('is it admin', resp);
+      console.log('is it admin', resp, JSON.stringify(Meteor.user()));
       if (resp) $rootScope.is_admin = true
     })
     Meteor.call('isSetUp', function(err, isSetUp) {

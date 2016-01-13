@@ -12,6 +12,7 @@ angular.module('quick-survey').directive('editSurveyDetails', function () {
               name: survey.name,
               description: survey.description,
               active: survey.active,
+              endNote: survey.endNote,
               require_sign_in: survey.require_sign_in
           } })
       };

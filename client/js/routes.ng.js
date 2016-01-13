@@ -104,12 +104,12 @@ angular.module("quick-survey").config(
 
 .run(function($rootScope, $state, $auth) {
 
+  $rootScope.on_sandstorm = true;
+
   $auth.waitForUser().then(function() {
     Meteor.call('isSandstorm', function(err, resp) {
       console.log('is it sandstorm', resp);
-      if (resp) {
-        $rootScope.on_sandstorm = true;
-      }
+      $rootScope.on_sandstorm = resp;
     });
     Meteor.call('isAdmin', function(err, resp) {
       console.log('is it admin', resp, JSON.stringify(Meteor.user()));

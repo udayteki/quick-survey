@@ -115,11 +115,5 @@ angular.module("quick-survey").config(
       console.log('is it admin', resp, JSON.stringify(Meteor.user()));
       if (resp) $rootScope.is_admin = true
     })
-    Meteor.call('isSetUp', function(err, isSetUp) {
-      console.log('is site setup', isSetUp);
-      if (!isSetUp) {
-        $state.go('setup')
-      }
-    })
   })
 })

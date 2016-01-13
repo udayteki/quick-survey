@@ -7,6 +7,12 @@
 ![quick-survey](http://i.imgur.com/AYn4Jd4.png)
 ![quick-survey-results](http://i.imgur.com/4elbHfe.png)
 
+# Try it out
+
+Have a go at managing [this heroku instance](https://quick-survey-sample-app.herokuapp.com/manage). The email is `admin@admin.com` and the password is `admin123`. 
+
+You can take the example survey here: https://quick-survey-sample-app.herokuapp.com/.
+
 # Goals
 
 * [x] One click install.
@@ -15,9 +21,15 @@
 
 # To deploy
 
+## To install on Sandstorm:
+
+* We've submitted the package to the Sandstorm team for QA. Check back here to try install it once it's been accepted and published.
+
 ## To deploy on Heroku:
 
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/simonv3/quick-survey/tree/develop)
+
+Then fill in the name and url of your app. Once your survey is deployed you'll be able to add questions, edit the details, etc. 
 
 ## To deploy with Meteor:
 

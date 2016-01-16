@@ -3,4 +3,5 @@ angular.module('quick-survey', [
   'angular-meteor.auth',
   'ui.router',
   'meteor-running',
-  'hc.marked']);
+  'ngSanitize',
+  'btford.markdown']);

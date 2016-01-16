@@ -35,16 +35,27 @@ form h1 {
   display: flex;
 
   label {
-    width: 10rem;
+    width: 20%;
     display: inline-block;
+    text-align: right;
+    margin-right: 1rem;
   }
 
   label + * {
     width: auto;
   }
 
-  button:first-child {
-    margin-left: 10rem;
+  input[type=checkbox] {
+    margin-top: .4rem;
+  }
+
+  > button:first-child,
+  .offset {
+    margin-left: 22%;
+  }
+
+  .offset {
+    width: 75%;
   }
 
   :not(:first-child) {

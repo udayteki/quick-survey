@@ -6,6 +6,7 @@ angular-meteor-auth@0.0.2
 angular-meteor-data@0.0.9
 angular-templates@0.0.3
 angular:angular@1.4.8
+angular:angular-sanitize@1.4.8
 angularui:angular-ui-router@0.2.15
 autoupdate@1.2.4
 babel-compiler@5.8.24_1
@@ -20,7 +21,6 @@ caching-compiler@1.0.0
 caching-html-compiler@1.0.2
 callback-hook@1.0.4
 check@1.1.0
-chuangbo:marked@0.3.5_1
 dburles:mongo-collection-instances@0.3.4
 ddp@1.2.2
 ddp-client@1.2.1
@@ -29,6 +29,7 @@ ddp-rate-limiter@1.0.0
 ddp-server@1.2.2
 deps@1.0.9
 diff-sequence@1.0.1
+divramod:angular-markdown-directive@0.0.1
 ecmascript@0.1.6
 ecmascript-runtime@0.2.6
 ejson@1.0.7
@@ -49,6 +50,7 @@ less@2.5.1
 livedata@1.0.15
 localstorage@1.0.5
 logging@1.0.8
+markdown@1.0.5
 meteor@1.1.10
 meteor-base@1.0.1
 minifiers@1.1.7
@@ -61,7 +63,6 @@ npm-bcrypt@0.7.8_2
 npm-mongo@1.4.39_1
 observe-sequence@1.0.7
 ordered-dict@1.0.4
-oshai:angular-marked@0.0.14
 pbastowski:angular-babel@1.0.9
 promise@0.5.1
 random@1.0.5
@@ -74,6 +75,7 @@ routepolicy@1.0.6
 service-configuration@1.0.5
 session@1.1.1
 sha@1.0.4
+showdown@1.0.5
 simonv3:meteor-running@0.4.2
 simonv3:meteor-running-admin@0.4.0
 simonv3:meteor-running-auth@0.4.1

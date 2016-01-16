@@ -1,5 +1,5 @@
 angular.module('quick-survey').controller('SurveyCtrl',
-  function ($scope, $q, $rootScope, $meteor, $state, surveys) {
+  function ($scope, $q, $rootScope, $meteor, $state, $auth) {
   $scope.loaded = false;
 
   $scope.$state = $state;
@@ -12,10 +12,17 @@ angular.module('quick-survey').controller('SurveyCtrl',
         if (survey.questions.length > 0) {
           return survey;
         } else {
-          if ($rootScope.is_admin) {
-            $state.go('manage');
-          }
-          return null;
+          console.log('there are no questions')
+          $auth.waitForUser().then(function() {
+            Meteor.call('isAdmin', function(err, isAdmin){
+              console.log('in survey: is admin?', resp)
+              $scope.$apply(function() {
+                console.log('applying')
+                if (isAdmin) $state.go('manage');
+              })
+            })
+          })
+
         }
 
       } else {
@@ -58,9 +65,10 @@ angular.module('quick-survey').controller('SurveyCtrl',
     Meteor.call('submitResponse', angular.copy(newResponse), function(err, id) {
       $scope.$apply(function() {
         $scope.has_submitted = true;
-      })
-      Session.setPersistent('has_submitted', 1)
-    })
+      });
+      Session.setPersistent('has_submitted', 1);
+      $state.go('submitted')
+    });
   };
 
 });

@@ -1,0 +1,7 @@
+<div class="has-submitted empty-state">
+  <span ng-show="!activeSurvey.endNote">Thanks for submitting your thoughts!</span>
+  <span btf-markdown="activeSurvey.endNote" ng-show="activeSurvey.endNote">
+  </span>
+
+  <a ng-if="on_sandstorm && activeSurvey.canBeShared" ng-click="share()"><i class="icon-share"></i> Share Survey</a>
+</div>

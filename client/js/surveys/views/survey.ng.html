@@ -1,8 +1,8 @@
 <div ng-if="(currentUser || !activeSurvey.require_sign_in) && activeSurvey.active" class="frontend">
   <h1 ng-bind="activeSurvey.name"></h1>
-  <form ng-if="!currentUser.has_submitted && !has_submitted" class="survey" name="survey">
+  <form class="survey" name="survey">
     <div class="description"
-      ng-bind="activeSurvey.description">
+      btf-markdown="activeSurvey.description">
     </div>
     <ul class="survey-question-list">
       <li class="survey-question"
@@ -10,14 +10,20 @@
         survey-question="question">
       </li>
     </ul>
-    <button ng-disabled="!survey.$valid"
+
+    <button
+      ng-if="!(currentUser.has_submitted|| has_submitted)"
+      ng-disabled="!survey.$valid"
       class="submit-survey-responses"
       ng-click="submit(newResponse)">Submit</button>
-  </form>
 
-  <div ng-if="currentUser.has_submitted || has_submitted" class="has-submitted empty-state">
-    Thanks for submitting your thoughts!
-  </div>
+    <p
+      ng-if="(currentUser.has_submitted|| has_submitted)"
+      >
+      <a href="/submitted" class="icon-cog spin"> </a>Thanks! Just finishing up...
+    </p>
+
+  </form>
 </div>
 
 <div ng-if="activeSurvey === null && !activeSurvey.active && loaded" class="empty-state">

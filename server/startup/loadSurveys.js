@@ -7,7 +7,7 @@ Meteor.startup(function () {
       'description': '',
       'close_date': undefined,
       'name': 'Active Survey',
-      'require_sign_in': true
+      'require_sign_in': false
     };
     Surveys.insert(survey);
   }

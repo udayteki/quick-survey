@@ -8,7 +8,6 @@ angularui:angular-ui-router
 accounts-password
 less
 tmeasday:publish-counts
-oshai:angular-marked
 email
 harrison:papa-parse
 u2622:persistent-session
@@ -29,3 +28,5 @@ spacebars
 check
 kenton:accounts-sandstorm
 angular-meteor-auth
+divramod:angular-markdown-directive
+angular:angular-sanitize

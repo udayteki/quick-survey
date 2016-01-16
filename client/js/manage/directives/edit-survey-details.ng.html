@@ -19,6 +19,14 @@
   <input id="survey-requires-sign-in" type="checkbox" ng-model="survey.require_sign_in"/>
 </div>
 <div class="form-align-group">
-  <span ng-if="!form.$pristine">Save your changes!</span>
-  <button ng-click="save(survey)">Save</button>
+  <label for="survey-can-be-shared">Can it be shared?</label>
+  <input id="survey-can-be-shared" type="checkbox" ng-model="survey.canBeShared"/>
+</div>
+<div class="form-align-group">
+  <div class="offset">
+
+    <button class="submit" ng-click="save(survey)">Save</button>
+    <span class="inform" ng-if="!form.$pristine">Save your changes!</span>
+  </div>
+
 </div>

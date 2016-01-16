@@ -29,6 +29,43 @@ angular.module("quick-survey").config(
 
             return deferred.promise;
           }],
+
+        }
+      })
+      .state('submitted', {
+        url: '/submitted',
+        templateUrl: 'client/js/surveys/views/submitted.ng.html',
+        controller: 'SubmittedCtrl',
+        resolve: {
+          'surveys': ['$q', function($q) {
+            var deferred = $q.defer();
+
+            Meteor.subscribe('surveys', {
+              onReady: deferred.resolve,
+              onStop: deferred.reject
+            });
+
+            return deferred.promise;
+          }],
+          'hasSubmitted': ['$state', '$auth', function($state, $auth) {
+            if (Session.get('has_submitted') !== 1) {
+              console.log('going to index because session hasn\'t submitted')
+              $state.go('index')
+            } else {
+              console.log('going to wait for the user')
+
+              $auth.waitForUser().then(function() {
+                console.log('we waited.')
+                if (Meteor.user() && !Meteor.user().has_submitted){
+                  console.log('found a user and the user hasn\'t submitted yet')
+                  $state.go('index')
+                } else {
+                  console.log('permission granted! continue fair wanderer...')
+                  return true
+                }
+              })
+            }
+          }]
         }
       })
       .state('manage', {
@@ -102,18 +139,23 @@ angular.module("quick-survey").config(
     $urlRouterProvider.otherwise("/");
   })
 
-.run(function($rootScope, $state, $auth) {
+.run(function($rootScope, $state, $auth, $timeout) {
 
   $rootScope.on_sandstorm = true;
 
   $auth.waitForUser().then(function() {
     Meteor.call('isSandstorm', function(err, resp) {
       console.log('is it sandstorm', resp);
-      $rootScope.on_sandstorm = resp;
+      $rootScope.$apply(function() {
+        $rootScope.on_sandstorm = resp;
+      })
     });
     Meteor.call('isAdmin', function(err, resp) {
       console.log('is it admin', resp, JSON.stringify(Meteor.user()));
-      if (resp) $rootScope.is_admin = true
+      $rootScope.$apply(function() {
+        $rootScope.is_admin = resp
+      })
     })
   })
+
 })

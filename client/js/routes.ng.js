@@ -154,6 +154,7 @@ angular.module("quick-survey").config(
       console.log('is it admin', resp, JSON.stringify(Meteor.user()));
       $rootScope.$apply(function() {
         $rootScope.is_admin = resp
+        $state.go('manage')
       })
     })
   })

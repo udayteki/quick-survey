@@ -26,7 +26,7 @@
   </form>
 </div>
 
-<div ng-if="activeSurvey === null && !activeSurvey.active && loaded" class="empty-state">
+<div ng-if="activeSurvey === null || (!activeSurvey.active && loaded) || (activeSurvey.active && activeSurvey.questions.length === 0)" class="empty-state">
   There is no active survey published yet.
 </div>
 

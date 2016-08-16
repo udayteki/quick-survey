@@ -43,7 +43,7 @@ htmljs@1.0.5
 http@1.1.1
 id-map@1.0.4
 jquery@1.11.4
-kenton:accounts-sandstorm@0.1.8
+kenton:accounts-sandstorm@0.4.0
 lai:collection-extensions@0.1.4
 launch-screen@1.0.4
 less@2.5.1
@@ -76,10 +76,6 @@ service-configuration@1.0.5
 session@1.1.1
 sha@1.0.4
 showdown@1.0.5
-simonv3:meteor-running@0.4.3
-simonv3:meteor-running-admin@0.4.3
-simonv3:meteor-running-auth@0.4.1
-simonv3:meteor-running-models@0.0.2
 spacebars@1.0.7
 spacebars-compiler@1.0.7
 srp@1.0.4

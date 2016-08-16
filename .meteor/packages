@@ -6,13 +6,13 @@
 
 angularui:angular-ui-router
 accounts-password
+accounts-base
 less
 tmeasday:publish-counts
 email
 harrison:papa-parse
 u2622:persistent-session
 angular@1.3.2
-simonv3:meteor-running
 standard-minifiers
 meteor-base
 mobile-experience

@@ -34,6 +34,6 @@ Meteor.methods({
     Responses.insert(response, function(err, id) {
       if (err) console.log('error', err);
       Meteor.users.update(Meteor.userId(), {$set: {has_submitted: true}});
-    })
+    });
   }
 });

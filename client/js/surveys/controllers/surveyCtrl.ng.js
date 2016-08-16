@@ -13,8 +13,6 @@ angular.module('quick-survey').controller('SurveyCtrl',
 
         if (survey.questions.length > 0) {
           return survey;
-        } else {
-          console.log('there are no questions')
         }
 
       } else {
@@ -28,9 +26,8 @@ angular.module('quick-survey').controller('SurveyCtrl',
     'questions': $scope.activeSurvey ? angular.copy($scope.activeSurvey.questions) : []
   };
 
-  // $meteor.session('has_submitted').bind($scope, 'has_submitted');
-
-  $scope.has_submitted = Session.get('has_submitted');
+  // TODO: only verify the user is we don't require logged in users.
+  // $scope.has_submitted = Session.get('has_submitted');
 
   $scope.submit = function(newResponse) {
     newResponse.questions.forEach(function(question) {
@@ -56,7 +53,7 @@ angular.module('quick-survey').controller('SurveyCtrl',
         $scope.has_submitted = true;
       });
       Session.setPersistent('has_submitted', 1);
-      $state.go('submitted')
+      $state.go('submitted');
     });
   };
 

@@ -23,7 +23,7 @@ You can take the example survey here: https://quick-survey-sample-app.herokuapp.
 
 ## To install on Sandstorm:
 
-* We've submitted the package to the Sandstorm team for QA. Check back here to try install it once it's been accepted and published.
+* Visit [Quick Survey in the Sandstorm App Market](https://apps.sandstorm.io/app/wupmzqk4872vgsye9t9x5dmrdw17mad97dk21jvcm2ph4jataze0) and click "Install".
 
 ## To deploy on Heroku:
 

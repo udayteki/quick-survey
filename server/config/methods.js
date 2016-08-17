@@ -24,11 +24,11 @@ Meteor.methods({
       Meteor.users.update(
           {has_submitted: true},
           {$set: {has_submitted: false}},
-          {multi: true})
+          {multi: true});
     });
   },
   resetResponses: function() {
-    Responses.remove({})
+    Responses.remove({});
   },
   submitResponse: function(response) {
     Responses.insert(response, function(err, id) {

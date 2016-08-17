@@ -7,11 +7,14 @@ angular.module('quick-survey').controller('ManageCtrl',
 
   $scope.helpers({
     responses: function() {
-      return Responses.find({})
+      return Responses.find({});
     },
     activeSurvey: function() {
-      if ($scope.activeSurveyId)
-        return Surveys.findOne($scope.activeSurveyId);
+      if ($scope.activeSurveyId) {
+        var survey = Surveys.findOne($scope.activeSurveyId);
+        console.log(survey);
+        return survey;
+      }
     }
   });
 
@@ -50,7 +53,7 @@ angular.module('quick-survey').controller('ManageCtrl',
   $scope.clearResults = function() {
     var success = confirm("This will remove all results so far, are you sure?");
     if (success) {
-      Meteor.call('resetResponses')
+      Meteor.call('resetResponses');
     }
   };
 

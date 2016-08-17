@@ -6,7 +6,7 @@ angular.module('quick-survey').controller('SurveyCtrl',
 
   $scope.helpers({
     activeSurvey: function() {
-      var surveys = Surveys.find({active: true}).fetch()
+      var surveys = Surveys.find({active: true}).fetch();
       if (surveys.length > 0) {
         var survey = Surveys.findOne(surveys[0]._id);
         $scope.loaded = true;

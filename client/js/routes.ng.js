@@ -117,7 +117,9 @@
 
               Meteor.subscribe('surveys', {
                 onReady: function() {
-                  var surveys = Surveys.find({active: true}).fetch();
+                  // Find the survey.
+                  var surveys = Surveys.find({}).fetch();
+
                   if (surveys.length > 0) {
                     var survey = Surveys.findOne(surveys[0]._id);
                     deferred.resolve(survey);

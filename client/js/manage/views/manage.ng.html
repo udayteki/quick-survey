@@ -21,7 +21,7 @@
   </tr>
   </tbody>
 </table>
-<small ng-hide="on_sandstorm"><a ng-click="exportAllResponses()" title="export all responses"><i class="icon-export"></i> Download CSV</a></small>.
+<small ng-if="response.length > 0"><a ng-click="exportAllResponses()" title="export all responses"><i class="icon-export"></i> Download CSV</a></small>.
 <small ng-hide="on_sandstorm">
   <a ng-click="sendTestEmail()" title="Send test email">Send test email</a>.
 </small>

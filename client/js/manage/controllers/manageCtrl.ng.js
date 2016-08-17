@@ -26,20 +26,30 @@ angular.module('quick-survey').controller('ManageCtrl',
         alert(error);
         return false;
       }
+      var csvContent = '';
+      // var csvContent = "data:text/csv;charset=utf-8,";
 
-      var csv = Papa.unparse(data);
-      self._downloadCSV(csv);
+      csvContent += data.fields.join(',') + '\n';
+
+      data.data.forEach(function(result, index){
+         var dataString = result.join(",");
+         csvContent += index < data.data.length ? dataString+ "\n" : dataString;
+      });
+
+      self._downloadCSV(csvContent);
+      // var csv = Papa.unparse(data);
+      // self._downloadCSV(csv);
     });
   };
 
   $scope._downloadCSV = function(csv) {
     var blob = new Blob([csv]);
     var a = window.document.createElement("a");
-      a.href = window.URL.createObjectURL(blob, {type: "text/plain"});
-      a.download = "responses.csv";
-      document.body.appendChild(a);
-      a.click();
-      document.body.removeChild(a);
+    a.href = window.URL.createObjectURL(blob, {type: "text/plain"});
+    a.download = "responses.csv";
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
   };
 
   $scope.sendTestEmail = function() {

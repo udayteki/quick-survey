@@ -92,25 +92,24 @@
           templateUrl: 'client/js/manage/views/manage.ng.html',
           controller: 'ManageCtrl',
           resolve: {
-            'currentUser': ['$q', function($q){
-              var deferred = $q.defer();
+            'currentUser': ['$q', '$auth', function($q, $auth){
+              return checkIfManager($q, $auth);
+              // Meteor.autorun(function() {
+              //   if (!Meteor.loggingIn()){
+              //     var user = Meteor.user();
+              //     if (user && user.is_admin)
+              //       deferred.resolve();
+              //     if (user) {
+              //       var sandstorm = Meteor.user().services.sandstorm;
+              //       if (sandstorm && sandstorm.permissions[0] === 'owner')
+              //         deferred.resolve();
 
-              Meteor.autorun(function() {
-                if (!Meteor.loggingIn()){
-                  var user = Meteor.user();
-                  if (user && user.is_admin)
-                    deferred.resolve();
-                  if (user) {
-                    var sandstorm = Meteor.user().services.sandstorm;
-                    if (sandstorm && sandstorm.permissions[0] === 'owner')
-                      deferred.resolve();
+              //     }
+              //    deferred.reject('UNAUTHORIZED');
+              //   }
+              // });
 
-                  }
-                 deferred.reject('UNAUTHORIZED');
-                }
-              });
-
-              return deferred.promise;
+              // return deferred.promise;
             }],
             'activeSurvey': ['$q', function($q) {
               var deferred = $q.defer();
@@ -185,7 +184,7 @@
         var user = Meteor.sandstormUser();
         if (user) {
           var isAdmin = false;
-          var managePermissions = ['owner', 'manager'];
+          var managePermissions = ['owner', 'manage'];
           managePermissions.forEach(function (permission) {
             if (user.permissions.indexOf(permission) > -1) {
               isAdmin = true;

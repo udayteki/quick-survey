@@ -12,7 +12,6 @@ angular.module('quick-survey').controller('ManageCtrl',
     activeSurvey: function() {
       if ($scope.activeSurveyId) {
         var survey = Surveys.findOne($scope.activeSurveyId);
-        console.log(survey);
         return survey;
       }
     }

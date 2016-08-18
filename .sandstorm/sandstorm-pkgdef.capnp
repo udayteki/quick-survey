@@ -148,7 +148,18 @@ const pkgdef :Spk.PackageDefinition = (
   # the app opens while running in dev mode. To see what that looks like,
   # run `spk init` without the -A option.)
 
-  bridgeConfig = (viewInfo = (permissions = [(name = "owner")]))
+  bridgeConfig = (
+    viewInfo = (
+      permissions = [(name = "owner"), (name = "manage")],
+      roles = [(title = (defaultText = "manager"),
+                permissions = [false, true],
+                verbPhrase = (defaultText = "Can edit survey")),
+               (title = (defaultText = "respondent"),
+                permissions = [false, false],
+                verbPhrase = (defaultText = "Can fill in survey"),
+                default = true)]
+    )
+  )
 );
 
 const myCommand :Spk.Manifest.Command = (

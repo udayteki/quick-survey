@@ -29,9 +29,8 @@ angular.module('quick-survey').directive('addQuestion', function () {
                 'type': $scope.questionTypes[0].type
               };
               $scope.showAddQuestionForm = false;
-            })
-
-          })
+            });
+          });
       };
     },
     templateUrl: 'client/js/manage/directives/add-question.ng.html',

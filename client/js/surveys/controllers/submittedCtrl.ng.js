@@ -18,5 +18,5 @@ angular.module('quick-survey')
 
     $scope.share = function() {
       window.parent.postMessage({'startSharing': {}}, '*');
-    }
+    };
 });

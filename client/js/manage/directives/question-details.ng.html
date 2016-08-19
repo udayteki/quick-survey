@@ -1,6 +1,19 @@
-{{ question.question }}
-<a ng-click="editQuestion(question)" title="Edit Question" class="icon-edit" ></a>
-<a ng-click="deleteQuestion(index)" title="Delete Question" class="icon-trash"></a>
+
+<div class="question-overview">
+  {{ question.question }}
+
+  <div class="manage-questions">
+    <a ng-hide="editingQuestion"
+       ng-click="editQuestion(question)"
+       title="Edit Question"
+       class="icon-edit" ></a>
+    <a ng-show="editingQuestion"
+       ng-click="editQuestion(question)"
+       title="Stop Editing"
+       class="icon-cross"></a>
+    <a ng-click="deleteQuestion(index)" title="Delete Question" class="icon-trash"></a>
+  </div>
+</div>
 
 <div ng-if="editingQuestion">
   <form>
@@ -38,8 +51,11 @@
       <input id="editing-question-{{ $index }}-required" type="checkbox" ng-model="question.required"/>
     </div>
     <div class="form-align-group">
-
-      <button ng-click="save(question)">Save Changes</button>
+      <save-button
+        click-event="save"
+        text="'Save Changes'"
+        saved-indicator="saved">
+      </save-button>
       <button ng-click="cancel(question)">Cancel</button>
     </div>
   </form>

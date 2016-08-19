@@ -9,6 +9,7 @@ angular.module('quick-survey').directive('manageSurvey', function () {
       $scope.questionTypes = [
         {'type': 'number'},
         {'type': 'text'},
+        {'type': 'email'},
         {'type': 'textarea'},
         {'type': 'radio'},
         {'type': 'checkbox'},

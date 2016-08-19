@@ -19,6 +19,11 @@
       {{ question.answer }}
     </td>
   </tr>
+  <tr ng-if="responses.length === 0">
+    <td>
+      No responses yet. <a ng-click="share()">Share your survey!</a>
+    </td>
+  </tr>
   </tbody>
 </table>
 <small ng-if="response.length > 0"><a ng-click="exportAllResponses()" title="export all responses"><i class="icon-export"></i> Download CSV</a>.</small>

@@ -24,8 +24,13 @@
 </div>
 <div class="form-align-group">
   <div class="offset">
-    <button class="submit" ng-click="save(survey)">Save</button>
+    <save-button
+      click-event="save"
+      text="'Save'"
+      saved-indicator="saved">
+    </save-button>
+    <!-- <button class="submit" ng-click="save(survey)">Save</button> -->
     <span class="inform" ng-if="!form.$pristine">Save your changes!</span>
-    <i ng-if="saved" class="icon-check"></i>
+
   </div>
 </div>

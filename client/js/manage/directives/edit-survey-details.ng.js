@@ -9,9 +9,11 @@ angular.module('quick-survey').directive('editSurveyDetails', function () {
 
       $scope.saved = false;
 
-      $scope.save = function(survey) {
+      $scope.save = function() {
         $scope.form.$pristine = true;
         $scope.saved = false;
+
+        var survey = $scope.survey;
 
         Surveys.update({_id: survey._id},
           { $set: {

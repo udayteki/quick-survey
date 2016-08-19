@@ -75,4 +75,8 @@ angular.module('quick-survey').controller('ManageCtrl',
       });
     }
   };
+
+  $scope.share = function() {
+    window.parent.postMessage({'startSharing': {}}, '*');
+  };
 });

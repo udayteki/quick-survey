@@ -1,3 +1,11 @@
+# 2.1.2
+
+* Save button now gives slightly better feedback for saving questions and form.
+
+# 2.1.1
+
+* Fix share button on manage.
+
 # 2.1.0
 
 * Share with other managers as well as normal respondents.

@@ -2,6 +2,8 @@
 
 > A tool for quickly building and releasing surveys. Open source & quick to host it yourself.
 
+[Demo](https://apps.sandstorm.io/app/wupmzqk4872vgsye9t9x5dmrdw17mad97dk21jvcm2ph4jataze0)
+
 ![quick-survey](http://i.imgur.com/AYn4Jd4.png)
 ![quick-survey-results](http://i.imgur.com/4elbHfe.png)
 

@@ -1,6 +1,7 @@
 # 2.1.2
 
 * Save button now gives slightly better feedback for saving questions and form.
+* Style changes to question management.
 
 # 2.1.1
 

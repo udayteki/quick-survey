@@ -29,11 +29,13 @@ Add a question <i class="icon-chevron-down"></i>
   <div ng-if="question.type === 'radio'"
     class="add-question-with-options"
     add-question-with-options
+    existing-options="question.options"
     question="question"
   ></div>
 
   <div ng-if="question.type === 'checkbox'"
     class="add-question-with-options"
+    existing-options="question.options"
     add-question-with-options
     question="question"
   ></div>

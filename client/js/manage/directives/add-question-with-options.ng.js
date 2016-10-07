@@ -23,6 +23,7 @@ angular.module('quick-survey').directive('addQuestionWithOptions', function () {
           'type': 'normal'
         });
       };
+
       $scope.addOther = function () {
         $scope.question.options.push({
           'type': 'other'

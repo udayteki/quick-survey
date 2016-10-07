@@ -29,7 +29,7 @@ What's needed:
 
 ## To run locally with Meteor:
 
-1. Install Meteor `curl https://install.meteor.com/ | sh`
+1. Install Meteor `curl https://install.meteor.com/ | sh` if it's not already installed
 2. Clone repo to a local directory `git clone git@github.com:simonv3/quick-survey` and change directory `cd quick-survey`.
 4. Run the app to see if it all works `SANDSTORM=1 meteor`
 

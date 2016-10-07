@@ -4,12 +4,17 @@
       <label for="{{ }}"><input type="{{ question.type }}" disabled/></label>
       <input id="{{ }}"
         type="text"
+        class="option-text"
         ng-model="option.value"
-        placeholder="Write something">
+        placeholder="Write something"/>
+      <a ng-click="remove($index)"
+        ng-if="question.options.length > 1">
+        <i class="icon-cross"></i>
+      </a>
     </div>
     <div class="form-align-group" ng-if="option.type === 'other'">
       <label for="{{ }}-other">Other: </label>
-      <input id="{{ }}-other" type="text" disabled>
+      <input id="{{ }}-other" type="text" disabled/>
     </div>
   </li>
 </ul>

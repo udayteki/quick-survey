@@ -1,3 +1,9 @@
+# 2.2.0
+
+* Do not delete options already entered when switching between radio and checkbox question options.
+* On creating a question "blank" inputs for radio and checkbox questions get removed.
+* When editing a radio or checkbox question, you can now delete options.
+
 # 2.1.2
 
 * Save button now gives slightly better feedback for saving questions and form.
@@ -15,7 +21,8 @@
 
 # 2.0.0
 
-This is a version bump largely because compatibility with Heroku has been removed. Getting it to work on Heroku shouldn't be too hard, but I'm not going to guarantee it in the future.
+This is a version bump largely because compatibility with Heroku has been removed.
+Getting it to work on Heroku shouldn't be too hard, but I'm not going to guarantee it in the future.
 
 * Enable CSV downloading.
 * Updated sandstorm-meteor-admin package.

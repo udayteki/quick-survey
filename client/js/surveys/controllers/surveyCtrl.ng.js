@@ -1,17 +1,43 @@
 angular.module('quick-survey').controller('SurveyCtrl',
-  function ($scope, $q, $rootScope, $meteor, $state, $auth) {
+  ['$scope', '$q', '$rootScope', '$meteor', '$state',
+  function ($scope, $q, $rootScope, $meteor, $state) {
   $scope.loaded = false;
 
   $scope.$state = $state;
 
+  $scope.survey;
+
+  Meteor.subscribe('surveys', {
+    onReady: function () {
+      console.log('loaded surveys');
+    },
+    onStop: function () {
+      console.log('survey subscribe stopped');
+    }
+  })
+
   $scope.helpers({
     activeSurvey: function() {
       var surveys = Surveys.find({active: true}).fetch();
+      console.log('found', surveys)
       if (surveys.length > 0) {
         var survey = Surveys.findOne(surveys[0]._id);
+        console.log(survey)
         $scope.loaded = true;
 
+        if (!$scope.activeSurvey) {
+          console.log('active survey not set');
+          // $scope.$apply(function () {
+          //   console.log('setting active survey');
+          //   console.log()
+            $scope.activeSurvey = survey;
+            activate();
+          //   console.log($scope.activeSurvey)
+          // });
+        }
+
         if (survey.questions.length > 0) {
+          activate();
           return survey;
         }
 
@@ -21,11 +47,12 @@ angular.module('quick-survey').controller('SurveyCtrl',
     }
   });
 
-  $scope.newResponse = {
-    'survey': $scope.activeSurvey,
-    'questions': $scope.activeSurvey ? angular.copy($scope.activeSurvey.questions) : []
-  };
-
+  function activate () {
+    $scope.newResponse = {
+      'survey': $scope.activeSurvey,
+      'questions': $scope.activeSurvey ? angular.copy($scope.activeSurvey.questions) : []
+    };
+  }
   // TODO: only verify the user is we don't require logged in users.
   // $scope.has_submitted = Session.get('has_submitted');
 
@@ -39,7 +66,7 @@ angular.module('quick-survey').controller('SurveyCtrl',
             question.answer.push(opt.value);
           }
         });
-      } else if (question.type === 'radio') {
+      } else if (question.type === 'radio' && question.answer) {
         question.answer = question.answer.value;
       }
     });
@@ -57,4 +84,4 @@ angular.module('quick-survey').controller('SurveyCtrl',
     });
   };
 
-});
+}]);

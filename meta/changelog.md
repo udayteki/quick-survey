@@ -1,3 +1,10 @@
+# 2.2.1
+
+* Update to a newer version of Meteor
+* Update to a newer version of angular-meteor.
+* Better checking of whether someone is logged in or not.
+* Radio buttons that weren't required and were not filled in errored on submitting.
+
 # 2.2.0
 
 * Do not delete options already entered when switching between radio and checkbox question options.

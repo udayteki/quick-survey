@@ -24,23 +24,42 @@
               var deferred = $q.defer();
 
               Meteor.subscribe('surveys', {
-                onReady: deferred.resolve,
-                onStop: deferred.reject
+                onReady: function() {
+                  // Find the survey.
+                  var surveys = Surveys.find({}).fetch();
+                  if (surveys.length > 0) {
+                    var survey = Surveys.findOne(surveys[0]._id);
+                    deferred.resolve(survey);
+                  } else {
+                    deferred.resolve(null);
+                  }
+                },
+                onStop: function (err, more) {
+                  var surveys = Surveys.find({}).fetch();
+                  // FIXME: this should be rejected.
+                  deferred.resolve()
+                }
               });
 
               return deferred.promise;
             }],
-            'hasSubmitted': ['$q', '$auth', '$state', function ($q, $auth, $state) {
-              $auth.waitForUser()
-                .then(function () {
-                  if (Meteor.user().has_submitted) {
+            'hasSubmitted': ['$q', '$auth', '$state', '$interval', function ($q, $auth, $state, $interval) {
+              var deferred = $q.defer();
+              var waitForUser = $interval(function () {
+                if (!Meteor.loggingIn() && Meteor.sandstormUser()) {
+
+                  if (Meteor.sandstormUser().has_submitted) {
+                    // TODO: figure out if this should reject.
                     $state.go('submitted');
                   } else {
-                    return true;
+                    deferred.resolve(Meteor.sandstormUser());
                   }
-                });
-            }],
+                  $interval.cancel(waitForUser)
+                }
 
+              }, 1000);
+              return deferred.promise;
+            }],
           }
         })
         .state('submitted', {
@@ -58,33 +77,6 @@
 
               return deferred.promise;
             }],
-            // 'hasSubmitted': ['$state', '$auth', function($state, $auth, $q) {
-              // if (Session.get('has_submitted') === -1) {
-              //   console.log('going to index because session hasn\'t submitted');
-              //   $state.go('index');
-
-              // } else {
-              //   console.log('going to wait for the user');
-
-              //   checkIfManager($q, $auth)
-              //     .then(function (user) {
-              //       console.log(Meteor.user());
-              //     })
-              //     .catch(function () {
-              //       console.log('no one found');
-              //     });
-                // $auth.waitForUser().then(function() {
-                  // console.log('we waited.');
-                  // if (Meteor.user() && !Meteor.user().has_submitted){
-                  //   console.log('found a user and the user hasn\'t submitted yet');
-                  //   $state.go('index');
-                  // } else {
-                  //   console.log('permission granted! continue fair wanderer...');
-                  //   return true;
-                  // }
-                // });
-              // }
-            // }]
           }
         })
         .state('manage', {
@@ -92,8 +84,8 @@
           templateUrl: 'client/js/manage/views/manage.ng.html',
           controller: 'ManageCtrl',
           resolve: {
-            'currentUser': ['$q', '$auth', function($q, $auth){
-              return checkIfManager($q, $auth);
+            'currentUser': ['$q', '$auth', '$interval', function($q, $auth, $interval){
+              return checkIfManager($q, $auth, $interval);
               // Meteor.autorun(function() {
               //   if (!Meteor.loggingIn()){
               //     var user = Meteor.user();
@@ -159,11 +151,11 @@
       $urlRouterProvider.otherwise("/");
     })
 
-  .run(function($rootScope, $q, $state, $auth, $timeout) {
+  .run(function($rootScope, $q, $state, $auth, $timeout, $interval) {
 
     $rootScope.on_sandstorm = true;
 
-    checkIfManager($q, $auth)
+    checkIfManager($q, $auth, $interval)
       .then(function () {
         $rootScope.is_admin = true;
         $rootScope.on_sandstorm = true;
@@ -178,8 +170,34 @@
 
   }
 
-  function checkIfManager($q, $auth) {
+  function checkIfManager($q, $auth, $interval) {
     return $q(function (resolve, reject) {
+
+      var waitForUser = $interval(function () {
+        if (!Meteor.loggingIn() && Meteor.sandstormUser()) {
+          var user = Meteor.sandstormUser();
+          if (user) {
+            var isAdmin = false;
+            var managePermissions = ['owner', 'manage'];
+            managePermissions.forEach(function (permission) {
+              if (user.permissions.indexOf(permission) > -1) {
+                isAdmin = true;
+              }
+            });
+            if (isAdmin) {
+              resolve(user);
+            } else {
+              reject(user);
+            }
+          } else {
+            reject();
+          }
+          $interval.cancel(waitForUser)
+        }
+
+      }, 1000);
+
+
       return $auth.waitForUser().then(function() {
         var user = Meteor.sandstormUser();
         if (user) {

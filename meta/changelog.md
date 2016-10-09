@@ -1,4 +1,4 @@
-# 2.2.1
+# 2.3.0
 
 * Update to a newer version of Meteor
 * Update to a newer version of angular-meteor.

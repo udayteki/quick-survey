@@ -79,4 +79,10 @@ angular.module('quick-survey').controller('ManageCtrl',
   $scope.share = function() {
     window.parent.postMessage({'startSharing': {}}, '*');
   };
+
+  $scope.publishAsRSSFeed = function () {
+    Meteor.call('getPublishID', function (err) {
+      if (err) console.error('error', err);
+    });
+  };
 });

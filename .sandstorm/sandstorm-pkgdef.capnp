@@ -142,7 +142,8 @@ const pkgdef :Spk.PackageDefinition = (
     ]
   ),
 
-  alwaysInclude = [ "." ],
+  alwaysInclude = [ ".", "getPublicId" ],
+
   # This says that we always want to include all files from the source map.
   # (An alternative is to automatically detect dependencies by watching what
   # the app opens while running in dev mode. To see what that looks like,

@@ -1,2 +1,4 @@
 .meteor/local
 packages
+var/www
+sandstorm-integration/tmp/*

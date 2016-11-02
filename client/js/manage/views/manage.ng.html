@@ -26,7 +26,7 @@
   </tr>
   </tbody>
 </table>
-<small ng-if="response.length > 0"><a ng-click="exportAllResponses()" title="export all responses"><i class="icon-export"></i> Download CSV</a>.</small>
+<small ng-if="responses.length > 0"><a ng-click="exportAllResponses()" title="export all responses"><i class="icon-export"></i> Download CSV</a>.</small>
 <small ng-hide="on_sandstorm">
   <a ng-click="sendTestEmail()" title="Send test email">Send test email</a>.
 </small>
@@ -58,3 +58,15 @@
   <i class="icon-share"></i>
   Share Survey using Sandstorm
 </a>
+
+<hr>
+
+<div ng-hide="true">
+  <p>Want the results of this survey published as an RSS Feed?
+  <a ng-click="publishAsRSSFeed()" title="publish as an rss feed">Publish</a>
+  </p>
+
+  <p ng-if="publicUrl">
+  Your public URL: <a href="{{ publicUrl }}/feed.xml">{{ publicUrl }}/feed.xml</a>
+  </p>
+</div>

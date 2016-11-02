@@ -1,3 +1,9 @@
+# 2.3.1
+
+* Remove ability to add multiple "Other"
+* Fix bug that prevented "Other" from being selected when creating a question.
+* Fix typo in manage view that prevented CSV from being downloaded.
+
 # 2.3.0
 
 * Update to a newer version of Meteor

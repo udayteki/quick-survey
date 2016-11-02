@@ -19,9 +19,9 @@ const pkgdef :Spk.PackageDefinition = (
 
     appTitle = (defaultText = "Quick Survey"),
 
-    appVersion = 8,  # Increment this for every release.
+    appVersion = 9,  # Increment this for every release.
 
-    appMarketingVersion = (defaultText = "2.3.0"),
+    appMarketingVersion = (defaultText = "2.3.1"),
     # Human-readable representation of appVersion. Should match the way you
     # identify versions of your app in documentation and marketing.
 
@@ -138,7 +138,8 @@ const pkgdef :Spk.PackageDefinition = (
     # The following directories will be copied into your package.
     searchPath = [
       ( sourcePath = "/home/vagrant/bundle" ),
-      ( sourcePath = "/opt/meteor-spk/meteor-spk.deps" )
+      ( sourcePath = "/opt/meteor-spk/meteor-spk.deps" ),
+      ( sourcePath = "/opt/app/sandstorm-integration/bin" )
     ]
   ),
 

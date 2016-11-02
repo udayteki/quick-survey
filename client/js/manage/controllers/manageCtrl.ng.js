@@ -36,8 +36,6 @@ angular.module('quick-survey').controller('ManageCtrl',
       });
 
       self._downloadCSV(csvContent);
-      // var csv = Papa.unparse(data);
-      // self._downloadCSV(csv);
     });
   };
 
@@ -81,8 +79,15 @@ angular.module('quick-survey').controller('ManageCtrl',
   };
 
   $scope.publishAsRSSFeed = function () {
-    Meteor.call('getPublishID', function (err) {
-      if (err) console.error('error', err);
+    Meteor.call('getPublicID', function (err, url) {
+      if (err) {
+        console.error('error', err);
+      } else {
+        console.log('lines', url);
+        $scope.$apply(function () {
+          $scope.publicUrl = url;
+        });
+      }
     });
   };
 });

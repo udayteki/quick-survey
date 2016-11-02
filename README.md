@@ -31,7 +31,9 @@ What's needed:
 
 1. Install Meteor `curl https://install.meteor.com/ | sh` if it's not already installed
 2. Clone repo to a local directory `git clone git@github.com:simonv3/quick-survey` and change directory `cd quick-survey`.
-4. Run the app to see if it all works `SANDSTORM=1 meteor`
+3. You might need to run `meteor npm install` to get all the npm packages working.
+4. Run the app to see if it all works `SANDSTORM=1 meteor`.
+Sandstorm=1 tells the app to pretend it's running inside of Meteor.
 
 # Attribution
 

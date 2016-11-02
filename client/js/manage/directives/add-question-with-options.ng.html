@@ -15,8 +15,15 @@
     <div class="form-align-group" ng-if="option.type === 'other'">
       <label for="{{ }}-other">Other: </label>
       <input id="{{ }}-other" type="text" disabled/>
+      <a ng-click="removeOther()">
+        <i class="icon-cross"></i>
+      </a>
     </div>
   </li>
 </ul>
 <a class="option-control" ng-click="addOption()"><i class="icon-plus"></i> Add option</a>
-<a class="option-control" ng-click="addOther()"><i class="icon-plus"></i> Add "other"</a>
+<a class="option-control"
+  ng-click="addOther()"
+  ng-hide="otherAlreadyAdded">
+  <i class="icon-plus"></i> Add "other"
+</a>

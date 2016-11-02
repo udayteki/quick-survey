@@ -18,7 +18,9 @@ angular.module('quick-survey').directive('addQuestion', function () {
       $scope.addQuestion = function(question) {
         // Filter out question options that have string length == 0.
         if (question.options && question.options.length) {
-          question.options = question.options.filter(function (o) { return o.value.length > 0; });
+          question.options = question.options.filter(function (o) {
+            return o.type === 'other' || o.value.length > 0;
+          });
         }
         $scope.survey.questions.push(question);
         Surveys.update($scope.survey._id,

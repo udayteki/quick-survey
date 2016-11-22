@@ -13,6 +13,7 @@
 
     <button
       ng-if="!(currentUser.has_submitted|| has_submitted)"
+      type="button"
       ng-disabled="!survey.$valid"
       class="submit-survey-responses"
       ng-click="submit(newResponse)">Submit</button>

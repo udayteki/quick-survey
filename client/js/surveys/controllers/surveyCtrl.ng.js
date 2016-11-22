@@ -53,6 +53,7 @@ angular.module('quick-survey').controller('SurveyCtrl',
       'questions': $scope.activeSurvey ? angular.copy($scope.activeSurvey.questions) : []
     };
   }
+
   // TODO: only verify the user is we don't require logged in users.
   // $scope.has_submitted = Session.get('has_submitted');
 

@@ -9,31 +9,23 @@ angular.module('quick-survey').controller('SurveyCtrl',
 
   Meteor.subscribe('surveys', {
     onReady: function () {
-      console.log('loaded surveys');
+      // console.log('loaded surveys');
     },
     onStop: function () {
-      console.log('survey subscribe stopped');
+      // console.log('survey subscribe stopped');
     }
   })
 
   $scope.helpers({
     activeSurvey: function() {
       var surveys = Surveys.find({active: true}).fetch();
-      console.log('found', surveys)
       if (surveys.length > 0) {
         var survey = Surveys.findOne(surveys[0]._id);
-        console.log(survey)
         $scope.loaded = true;
 
         if (!$scope.activeSurvey) {
-          console.log('active survey not set');
-          // $scope.$apply(function () {
-          //   console.log('setting active survey');
-          //   console.log()
             $scope.activeSurvey = survey;
             activate();
-          //   console.log($scope.activeSurvey)
-          // });
         }
 
         if (survey.questions.length > 0) {

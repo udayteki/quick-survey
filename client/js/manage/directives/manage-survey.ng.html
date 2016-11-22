@@ -8,22 +8,27 @@
     </div>
   </div>
 </form>
-<div class="questions">
+<div class="questions" ui-tree>
 <h2>Survey Questions</h2>
   <div ng-if="survey.questions.length === 0 && !addingQuestion" class="empty-state">
     Add some questions
   </div>
-  <ul ng-if="survey">
+  <ul ui-tree-nodes ng-model="survey.questions" ng-if="survey">
     <li ng-repeat="question in survey.questions"
+      ui-tree-node
       question-details
       question="question"
       index="$index"
       question-types="questionTypes"
-      survey="survey">
+      questions="survey.questions"
+      save="save">
     </li>
   </ul>
-  <span add-question
+  <div add-question
     survey="survey"
     question-types="questionTypes"
-    class="add-question"></span>
+    class="add-question"></div>
+  <button type="button" ng-click="save()">
+    Save Questions
+  </button>
 </div>

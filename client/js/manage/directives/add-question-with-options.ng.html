@@ -13,7 +13,14 @@
       </a>
     </div>
     <div class="form-align-group" ng-if="option.type === 'other'">
-      <label for="{{ }}-other">Other: </label>
+      <label class="other-option-label" for="{{ }}-other"
+        ng-class="{active: active}">
+        <span class="other-label"
+          ng-click="active = true">{{ option.otherLabel || 'Other' }}:</span>
+        <input ng-model="option.otherLabel"
+          type="text"
+          ng-blur="active = false"></input>
+      </label>
       <input id="{{ }}-other" type="text" disabled/>
       <a ng-click="removeOther()">
         <i class="icon-cross"></i>

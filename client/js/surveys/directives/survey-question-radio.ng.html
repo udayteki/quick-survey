@@ -13,7 +13,7 @@
       name="{{ question.question }}"
       type="{{ question.type }}"
       ng-change="optionChanged(option)"
-      /> Other
+      /> {{ option.otherLabel || 'Other' }}
   </span>
 
   <input ng-if="option.type === 'other' && choosingOther"

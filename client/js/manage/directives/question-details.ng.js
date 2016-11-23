@@ -30,6 +30,13 @@ angular.module('quick-survey').directive('questionDetails', function () {
           $scope.save();
         }
       };
+
+      $scope.isDisabled = function (question) {
+        if (question.type === 'radio') {
+          return question.options.length <= 1;
+        }
+        return false;
+      }
     },
     templateUrl: 'client/js/manage/directives/question-details.ng.html',
   };

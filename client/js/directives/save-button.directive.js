@@ -1,3 +1,4 @@
+
 /* globals */
 
 (function(angular) {
@@ -15,8 +16,10 @@
       scope: {
         'text': '=',
         'clickEvent': '=',
-        'savedIndicator': '='
+        'savedIndicator': '=',
+        'disabled': '='
       },
+      transclude: true,
       controllerAs: 'vm',
       bindToController: true,
       controller: function ($scope){

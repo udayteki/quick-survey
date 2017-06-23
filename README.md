@@ -35,6 +35,16 @@ What's needed:
 4. Run the app to see if it all works `SANDSTORM=1 meteor`.
 Sandstorm=1 tells the app to pretend it's running inside of Meteor.
 
+If you want to add an administrator, you'll need to use the API made available by [meteor-accounts-sandstorm](https://github.com/sandstorm-io/meteor-accounts-sandstorm). Then add a user like so:
+
+```
+SandstormAccounts.setTestUserInfo({
+  id: 1,
+  name: "Alice",
+  permissions: ['owner']
+});
+```
+
 # Attribution
 
 * Entypo icon font used for icons. It's beautiful. http://www.entypo.com/

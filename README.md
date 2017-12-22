@@ -1,5 +1,7 @@
 # Quick Survey
 
+## Quick Survey is no longer actively maintained. If you want to help keep it running, reach out!
+
 > A tool for quickly building and releasing surveys. Open source & quick to host it yourself.
 
 [Demo](https://apps.sandstorm.io/app/wupmzqk4872vgsye9t9x5dmrdw17mad97dk21jvcm2ph4jataze0)

@@ -1,3 +1,4 @@
+const toCsv = require('csv-stringify/lib/sync');
 
 angular.module('quick-survey').controller('ManageCtrl',
   function ($scope, $reactive, $state, $rootScope, activeSurvey, responses) {
@@ -25,15 +26,9 @@ angular.module('quick-survey').controller('ManageCtrl',
         alert(error);
         return false;
       }
-      var csvContent = '';
-      // var csvContent = "data:text/csv;charset=utf-8,";
-
-      csvContent += data.fields.join(',') + '\n';
-
-      data.data.forEach(function(result, index){
-         var dataString = result.join(",");
-         csvContent += index < data.data.length ? dataString+ "\n" : dataString;
-      });
+        var csvContent = toCsv(data.data,{columns: data.fields,
+                                          header:true,
+                                          quoted:true});
 
       self._downloadCSV(csvContent);
     });
